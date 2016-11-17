@@ -19,6 +19,6 @@ View the API's documentation here.
 
 ## Optional Enhancements
   - **For more practice with showing a list of Many Trips**, Show trips by search queries (like by continent, budget, etc.). Will need to explore API to see what functionality exists. 
-  - ** To practice a more advanced POST**, Setup the functionalit to create a new trip. 
-  - ** For more JQuery Practice**, Use Jquery to resort list of trips by specific attributes, like budget or time remaining. 
-  - ** For an extra challenge**, Have the number of spots available update on a page automatically if another user were to reserve a spot while you were viewing that trip.
+  - **To practice a more advanced POST**, Setup the functionalit to create a new trip. 
+  - **For more JQuery Practice**, Use Jquery to resort list of trips by specific attributes, like budget or time remaining. 
+  - **For an extra challenge**, Have the number of spots available update on a page automatically if another user were to reserve a spot while you were viewing that trip.
