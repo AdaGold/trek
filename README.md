@@ -8,7 +8,7 @@ All of this should be done without ever having to reload the page.
 
 ## The API
 
-View the API's documentation here. 
+View the [Travel API's documentation](https://github.com/PilgrimMemoirs/trip_api). 
 
 
 ## Minimum Requirements 
