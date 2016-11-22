@@ -6,6 +6,8 @@ You will build a single page application that will query data from an api, using
 
 All of this should be done without ever having to reload the page. Meaning, it will be a single page application and will only need one html page (index.html). 
 
+Reminder: You shall use HTML best-practices. You should organize your HTML by grouping content using semantic HTML tags.
+
 ## The API
 
 View the [Travel API's documentation](https://github.com/ada-c6/trip_api). 
@@ -17,8 +19,6 @@ View the [Travel API's documentation](https://github.com/ada-c6/trip_api).
     - Should be able to see id, name, destination, continent, about, category, weeks and cost 
   - **Wave 3** While viewing a single trip, you can reserve a spot
     - Use a form to submit your name to reserve a spot on the trip you are viewing
-  - **Wave 4** Organize all content into HTML tags. 
-    - Further organize your HTML by grouping content using semantic HTML tags
 
 
 ## Optional Enhancements
