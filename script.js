@@ -14,14 +14,34 @@ $(document).ready(function() {
   var loadTrips = function() {
     $('#load').click(function() {
       $.get(url, multiCallback);
-      buttonText();
+      // buttonText();
     });
   };
 
   var clickTrip = function() {
+    $('#trip-list').on('click', 'a', function(event) {
+      event.preventDefault();
+      $('#current-trip').show();
+      var tripUrl = $(this).attr('href');
 
+      $.get(tripUrl, tripInfo)
+    })
   };
 
+  var tripInfo = function(trip) {
+    $('#current-trip').empty();
+    // i'm separating these into several 'appends' for readability; otherwise the line gets out of control.
+    $('#current-trip').append("<h2 id='trip-name'>" + trip.name.toUpperCase() + "</h2>");
+    $('#current-trip').append("<h4 id='logistics'>" + trip.continent.toUpperCase() + " | " + trip.weeks + " " + weekHelper(trip.weeks) + "</h4>");
+    $('#current-trip').append("<p id='logistics'>category: " + trip.category.toUpperCase() + " | cost: $" + trip.cost + "</p>");
+    // $('#trip-category').text(trip.category);
+    // // $('#trip-about').text(trip.about);
+    // // $('#trip-cost').text(trip.cost);
+  };
+
+
+
   loadTrips();
+  clickTrip();
 
 }); // end of document dot ready
