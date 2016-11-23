@@ -33,7 +33,7 @@ $(document).ready(function() {
     // i'm separating these into several 'appends' for readability; otherwise the line gets out of control.
     $('#current-trip').append("<h2 id='trip-name'>" + trip.name.toUpperCase() + "</h2>");
     $('#current-trip').append("<h4 id='logistics'>" + trip.continent.toUpperCase() + " | " + trip.weeks + " " + weekHelper(trip.weeks) + "</h4>");
-    $('#current-trip').append("<p id='logistics'>category: " + trip.category.toUpperCase() + " | cost: $" + trip.cost + "</p>");
+    $('#current-trip').append("<p id='logistics'>category: " + trip.category.toUpperCase() + " | cost: " + dollarHelper(trip.cost) + "</p>");
     // $('#trip-category').text(trip.category);
     // // $('#trip-about').text(trip.about);
     // // $('#trip-cost').text(trip.cost);
