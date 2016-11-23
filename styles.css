@@ -18,6 +18,7 @@ header {
 
 #displayed-trip {
   display: none;
+  display: fixed;
 }
 
 .title{
