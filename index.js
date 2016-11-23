@@ -55,12 +55,17 @@ $(document).ready(function(){
     var result = $.get($(this).attr('href'), function(response){
       $('#displayed-trip').empty();
       $('#displayed-trip').append("<h3 class=title>" + response.name);
+      $('#displayed-trip').append("<button class='close-button' aria-label='Dismiss alert' type='button' data-close><span>&times;</span></button>");
       $('#displayed-trip').append("<p>" + response.about);
       $('#displayed-trip').append("<ul><li>Category: " + response.category[0].toUpperCase()+ response.category.slice(1) + "</li><li>Weeks: " + response.weeks + "</li><li>Price: $" + response.cost.toString() + (response.cost.toString()[response.cost.toString().length-2] == "."? "0" : "") + "</li><li>Continent: " + response.continent + "</li><li>Trip ID: " + response.id + "</li></ul>");
       $('#displayed-trip').show();
     }).fail(failCallback);
   });
 
+  $('#displayed-trip').on('click', '.close-button', function(){
+    $('#displayed-trip').empty();
+    $('#displayed-trip').hide();
+  });
 });
 
   // $('#pets').on('click', 'a', function(e){
