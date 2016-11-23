@@ -50,6 +50,8 @@ $(document).ready(function(){
       .fail(failCallback);
   });
 
+  //Close button from: http://foundation.zurb.com/forum/posts/38045-about-the-close-button-it-not-working
+
   $('#trips').on('click', 'a', function(e){
     e.preventDefault();
     var result = $.get($(this).attr('href'), function(response){
@@ -67,20 +69,3 @@ $(document).ready(function(){
     $('#displayed-trip').hide();
   });
 });
-
-  // $('#pets').on('click', 'a', function(e){
-  //   // console.log("CLICKED");
-  //   // console.log(this);
-  //   // var num = $(this).attr('class').split(/\s+/)[1];
-  //   e.preventDefault();
-  //   var that = $(this).parent();
-  //   var result = $.get($(this).attr('href'), function(response){
-  //
-  //     $(that).append("<p>Name: " + response.name + "</p>");
-  //     $(that).append("<p>Breed: " + response.breed + "</p>");
-  //     $(that).append("<p>Age: " + response.age + "</p>");
-  //   })
-  //     .fail(singlePetFailCallback)
-  //       .always(function(){console.log('ALWAYS SAYS THIS');});
-  //   console.log(result.responseText);
-  // });
