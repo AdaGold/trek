@@ -9,6 +9,9 @@ $(document).ready(function() {
     };
   };
 
-  $.get(url, multiCallback);
+  $('#load').click(function() {
+    $.get(url, multiCallback);
+  });
+
 
 }); // end of document dot ready
