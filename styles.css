@@ -1,0 +1,30 @@
+.landing-button {
+  display: block;
+}
+
+header {
+  padding: 2%;
+  text-align: center;
+}
+
+.tile {
+  display: none;
+  padding-bottom: 1%;
+}
+
+#trips {
+  text-align: center;
+}
+
+#displayed-trip {
+  display: none;
+  display: fixed;
+}
+
+.title{
+  display: inline-block;
+}
+
+h3.title{
+  margin-right: 3%;
+}
