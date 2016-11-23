@@ -9,9 +9,14 @@ $(document).ready(function() {
     };
   };
 
-  $('#load').click(function() {
-    $.get(url, multiCallback);
-  });
 
+  var loadTrips = function() {
+    $('#load').click(function() {
+      $.get(url, multiCallback);
+      buttonText();
+    });
+  };
+
+  loadTrips();
 
 }); // end of document dot ready
