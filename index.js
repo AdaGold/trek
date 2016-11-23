@@ -60,6 +60,13 @@ $(document).ready(function(){
       $('#displayed-trip').append("<button class='close-button' aria-label='Dismiss alert' type='button' data-close><span>&times;</span></button>");
       $('#displayed-trip').append("<p>" + response.about);
       $('#displayed-trip').append("<ul><li>Category: " + response.category[0].toUpperCase()+ response.category.slice(1) + "</li><li>Weeks: " + response.weeks + "</li><li>Price: $" + response.cost.toString() + (response.cost.toString()[response.cost.toString().length-2] == "."? "0" : "") + "</li><li>Continent: " + response.continent + "</li><li>Trip ID: " + response.id + "</li></ul>");
+
+      $('#displayed-trip').append("<form id=reservation>");
+      $('#reservation').append("<input type=text name=name value=Name>");
+      $('#reservation').append("<input type=text name=email value=Email address>");
+      $('#reservation').append("<input type=text name=age value=Age>");
+      $('#reservation').append("<input type=submit name=submit value=Submit class=submit-button>");
+
       $('#displayed-trip').show();
     }).fail(failCallback);
   });
@@ -67,5 +74,16 @@ $(document).ready(function(){
   $('#displayed-trip').on('click', '.close-button', function(){
     $('#displayed-trip').empty();
     $('#displayed-trip').hide();
+  });
+
+  //How to collect data from a form using jQuery: http://stackoverflow.com/questions/169506/obtain-form-input-fields-using-jquery
+
+  $(document).on('submit', '#reservation', function(e){
+    console.log("YO");
+    e.preventDefault();
+    var array = $('#reservation').serializeArray();
+    console.log(array[0].value);
+    console.log(array[1].value);
+    console.log(array[2].value);
   });
 });
