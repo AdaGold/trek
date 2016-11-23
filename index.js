@@ -50,14 +50,27 @@ $(document).ready(function(){
       .fail(failCallback);
   });
 
+  //Close button from: http://foundation.zurb.com/forum/posts/38045-about-the-close-button-it-not-working
+
   $('#trips').on('click', 'a', function(e){
     e.preventDefault();
     var result = $.get($(this).attr('href'), function(response){
+      //Display information about the trip
       $('#displayed-trip').empty();
       $('#displayed-trip').append("<h3 class=title>" + response.name);
       $('#displayed-trip').append("<button class='close-button' aria-label='Dismiss alert' type='button' data-close><span>&times;</span></button>");
       $('#displayed-trip').append("<p>" + response.about);
       $('#displayed-trip').append("<ul><li>Category: " + response.category[0].toUpperCase()+ response.category.slice(1) + "</li><li>Weeks: " + response.weeks + "</li><li>Price: $" + response.cost.toString() + (response.cost.toString()[response.cost.toString().length-2] == "."? "0" : "") + "</li><li>Continent: " + response.continent + "</li><li>Trip ID: " + response.id + "</li></ul>");
+
+      //Display a form to reserve a spot on the trip
+      $('#displayed-trip').append("<h5>Make your reservation for this trip today!</h5>");
+      $('#displayed-trip').append("<form id=reservation>");
+      $('#reservation').append("<input type=text name=name value=Name>");
+      $('#reservation').append("<input type=text name=email value=Email address>");
+      $('#reservation').append("<input type=hidden name=age value=" + response.id + ">");
+      $('#reservation').append("<input type=submit name=submit value=Submit class=button submit-button>");
+
+      //Make the trip section visible
       $('#displayed-trip').show();
     }).fail(failCallback);
   });
@@ -66,21 +79,20 @@ $(document).ready(function(){
     $('#displayed-trip').empty();
     $('#displayed-trip').hide();
   });
-});
 
-  // $('#pets').on('click', 'a', function(e){
-  //   // console.log("CLICKED");
-  //   // console.log(this);
-  //   // var num = $(this).attr('class').split(/\s+/)[1];
-  //   e.preventDefault();
-  //   var that = $(this).parent();
-  //   var result = $.get($(this).attr('href'), function(response){
-  //
-  //     $(that).append("<p>Name: " + response.name + "</p>");
-  //     $(that).append("<p>Breed: " + response.breed + "</p>");
-  //     $(that).append("<p>Age: " + response.age + "</p>");
-  //   })
-  //     .fail(singlePetFailCallback)
-  //       .always(function(){console.log('ALWAYS SAYS THIS');});
-  //   console.log(result.responseText);
-  // });
+  //How to collect data from a form using jQuery: http://stackoverflow.com/questions/169506/obtain-form-input-fields-using-jquery
+  //How to collect data from dynamically created forms: http://stackoverflow.com/questions/14832534/how-to-add-submit-event-to-dynamically-generated-form
+
+  $(document).on('submit', '#reservation', function(e){
+    e.preventDefault();
+    var userResponse = $('#reservation').serializeArray();
+    var name = userResponse[0].value;
+    var email = userResponse[1].value;
+    var tripId = userResponse[2].value;
+    var result = $.post(url + "/" + tripId + "/reserve", { name: name, email: email},function(response){
+      $('#displayed-trip').append("<p>Congratulations! Your reservation has been made.</p>");
+    }).fail(function(response){
+      $('#displayed-trip').append("<p>Sorry, there was an error and your reservation could not be completed.</p>");
+    });
+  });
+});
