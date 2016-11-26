@@ -9,11 +9,9 @@ $(document).ready(function() {
     };
   };
 
-  //  $('#pets').append('<li><a href=' + url + '/' + response[i].id + '>' + response[i].name + '</a></li>');
-
   var loadTrips = function() {
     if ($('#trip-list').html() === "") {
-      alert("it's empty!");
+      // alert("it's empty!");
       $('#load').text("SEE ALL TRIPS");
       $('#load').click(function() {
         $.get(url, multiCallback);
@@ -27,7 +25,7 @@ $(document).ready(function() {
   var clickTrip = function() {
     $('#trip-list').on('click', 'a', function(event) {
       event.preventDefault();
-      $('#current-trip').show();
+      $('#wrapper').show();
       var tripUrl = $(this).attr('href');
 
       $.get(tripUrl, tripInfo)
@@ -39,12 +37,28 @@ $(document).ready(function() {
     // i'm separating these into several 'appends' for readability; otherwise the line gets out of control.
     $('#current-trip').append("<h2 id='trip-name'>" + trip.name.toUpperCase() + "</h2>");
     $('#current-trip').append("<h4 id='logistics'>" + trip.continent.toUpperCase() + " | " + trip.weeks + " " + weekHelper(trip.weeks) + "</h4>");
-    $('#current-trip').append("<p id='logistics'>category: " + trip.category.toUpperCase() + " | cost: " + dollarHelper(trip.cost) + "</p>");
+    $('#current-trip').append("<p id='info'>category: " + trip.category.toUpperCase() + " | cost: " + dollarHelper(trip.cost) + "</p>");
     $('#current-trip').append("<p id='about'>" + trip.about + "</p>")
-    // // $('#trip-about').text(trip.about);
-    // // $('#trip-cost').text(trip.cost);
+    $('#current-trip').append(reserveTrip(trip.id))
   };
 
+  var reserveTrip = function(id) {
+    $('form').submit(function(event) {
+      event.preventDefault();
+      var tripUrl = url + "/" + id + "/reserve";
+      console.log(tripUrl);
+      var data = $(this).serialize();
+      $.post(tripUrl, data, reserveCallback);
+    });
+  }
+
+  var reserveCallback = function() {
+    alert("trip reserved!");
+    // found this on the interwebs, clears the form fields after submission
+    $('form').each(function(){
+      this.reset();
+    });
+  };
 
 
   loadTrips();

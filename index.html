@@ -7,11 +7,19 @@
   </head>
   <body>
     <button id='load'>SEE ALL TRIPS</button>
-    <div id='current-trip'>
+    <div id='wrapper'>
+      <div id='current-trip'>
+      </div>
+      <form method='POST'>
+        <h4>RESERVE YOUR SPOT</h4>
+        <label for='name'>name:</label><input name='name' id='name'/>
+        <label for='email'>email:</label><input name='email' id='email'/>
+        <button type='submit'>RESERVE</button>
+      </form>
     </div>
     <div id='content'>
       <h1 id='headline'></h1>
-      <p id='trip-list'></p>
+      <ul id='trip-list'></ul>
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 
