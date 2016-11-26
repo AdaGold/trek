@@ -1,22 +1,13 @@
-console.log($(document).ready(function(){
-  var urlTrip = 'https://trektravel.herokuapp.com/trips';
-  console.log(urlTrip);
-
-  // Show all trips
+$(document).ready(function(){
   
-var successCallBack = function(response){
-  for (var i = 0; i < response.length; i++){
-    $('#trips').append('<h4><a href=' + urlTrip + '/' + response[i].id + '>' + response[i].name + '</a></h4>');
-  }
-};
-console.log(successCallBack);
+  var tripUrl = 'https://trektravel.herokuapp.com/trips';
 
-
-
-
-
-  console.log($('#load').on('click', 'button', function(e){
-    console.log(e.preventDefault());
-  }))
-
-}));
+  $('#load').on('click', function(){
+    $.get(tripUrl, function(data){
+      for (i = 0; i < data.length; i ++){
+        $('#trips').append('<h3>' + data[i].name + '</h3>');
+      };
+      console.log("inside get");
+    });
+  });
+})
