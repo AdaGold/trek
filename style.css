@@ -2,9 +2,10 @@
   background-color: rgb(88, 161, 143);
 }
 
-#current-trip {
+#wrapper {
   display: none;
   background-color: rgb(201, 204, 61);
+  padding: 5%;
 }
 
 #trip-name {
