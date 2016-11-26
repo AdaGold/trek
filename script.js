@@ -12,10 +12,16 @@ $(document).ready(function() {
   //  $('#pets').append('<li><a href=' + url + '/' + response[i].id + '>' + response[i].name + '</a></li>');
 
   var loadTrips = function() {
-    $('#load').click(function() {
-      $.get(url, multiCallback);
-      // buttonText();
-    });
+    if ($('#trip-list').html() === "") {
+      alert("it's empty!");
+      $('#load').text("SEE ALL TRIPS");
+      $('#load').click(function() {
+        $.get(url, multiCallback);
+      });
+    } else {
+        alert("it's not empty!");
+        $('#load').text("REMOVE ALL TRIPS");
+    };
   };
 
   var clickTrip = function() {
@@ -34,7 +40,7 @@ $(document).ready(function() {
     $('#current-trip').append("<h2 id='trip-name'>" + trip.name.toUpperCase() + "</h2>");
     $('#current-trip').append("<h4 id='logistics'>" + trip.continent.toUpperCase() + " | " + trip.weeks + " " + weekHelper(trip.weeks) + "</h4>");
     $('#current-trip').append("<p id='logistics'>category: " + trip.category.toUpperCase() + " | cost: " + dollarHelper(trip.cost) + "</p>");
-    // $('#trip-category').text(trip.category);
+    $('#current-trip').append("<p id='about'>" + trip.about + "</p>")
     // // $('#trip-about').text(trip.about);
     // // $('#trip-cost').text(trip.cost);
   };
