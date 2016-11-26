@@ -7,7 +7,6 @@ $(document).ready(function(){
       for (i = 0; i < data.length; i ++){
         $('#trips').append('<h3>' + data[i].name + '</h3>');
       };
-      console.log("inside get");
     });
   });
 })
