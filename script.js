@@ -43,7 +43,8 @@ $(document).ready(function() {
   };
 
   var reserveTrip = function(id) {
-    $('form').submit(function() {
+    $('form').submit(function(event) {
+      event.preventDefault();
       var tripUrl = url + "/" + id + "/reserve";
       console.log(tripUrl);
       var data = $(this).serialize();
@@ -52,7 +53,11 @@ $(document).ready(function() {
   }
 
   var reserveCallback = function() {
-    alert("trip reserved!")
+    alert("trip reserved!");
+    // found this on the interwebs, clears the form fields after submission
+    $('form').each(function(){
+      this.reset();
+    });
   };
 
 
