@@ -2,8 +2,6 @@ $(document).ready(function() {
 
   var tripsUrl = 'https://trektravel.herokuapp.com/trips';
 
-
-
   // show list of trips on click
   // variable extraction refactoring
   var onDataArrivedCallback = function(data) {
@@ -21,9 +19,6 @@ $(document).ready(function() {
   };
 
   $('#load').on('click', onLoadClicked);
-
-
-
 
   // show details of one trip on
   var onTripDetailsArrived = function(trip) {
@@ -67,30 +62,4 @@ $(document).ready(function() {
     $.post(reservationUrl, personalData, callback);
   
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 })
