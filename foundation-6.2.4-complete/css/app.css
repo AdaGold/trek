@@ -1,0 +1,35 @@
+
+/*= require foundation
+
+.body, .container{
+  margin: 5px 10px;
+  background-color: #F4F4F4;
+  color: slategray;
+}
+.callout-large,.heading{
+  margin: 10px 15px;
+  list-style-type: none;
+  list-style: none;
+  border: solid 5px #EFD581;
+  text-align: center;
+  font-family: sans-serif;
+}
+.title {
+  display: inline-block;
+  font-family: sans-serif;
+  width: 80%;
+  color: #A5A5AF;
+  background-color: #4484CE;
+}
+.title:hover{
+  background-color: #373737;
+}
+.button-details{
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+  background-color: #BDBABA;
+}
+.button-details:hover{
+  background-color: #DCD0C0;
+}
