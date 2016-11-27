@@ -459,6 +459,7 @@ template {
 [hidden] {
   display: none;
 }
+
 a {
   border: 0.1em;
   text-decoration: none;
