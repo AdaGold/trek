@@ -49,66 +49,109 @@ $(document).ready(function() {
   };
 
   var showSuccess = function(trip) {
-    var section = $('#details');
-    var row = $('<tr></tr>');
-    var name = $('<div>' + trip.id + '<strong>' + trip.name + '</strong></div>');
-    var locale = $('<div>' + trip.destination + trip.continent + '</strong></div>');
-    var cost = $('<strong>' + trip.cost + '</strong></div>');
-    var about = $('<div><strong>' + trip.about + '</strong></div>');
-    var week = $('<div><strong>' + trip.weeks + '</strong></div>');
+    if (trip.id === undefined){
+      trip.id = "";}
+      if (trip.name === undefined){
+        trip.name = "";}
+        if (trip.destination === undefined){
+          trip.destination = "";}
+          if(trip.continent === undefined){
+            trip.continent = "";}
+            if(trip.cost === undefined){
+              trip.cost = "";}
+              if(trip.about === undefined){
+                trip.about = "";}
+                if(trip.weeks === undefined){
+                  trip.weeks = "";}
+                  // trip.destination === undefined || trip.destination === undefined = "";
 
-    section.empty(); // Reset the HTML in case there is data from before
-    section.append(name, locale, cost, about, week);
 
-    toggleTableView(false);
-  };
+                  var section = $('#details');
+                  var row = $('<div class="row">');
+                  var id = $('<p id="index">Reservation Id:  ' + trip.id + '</p>');
+                  var name = $('<p id="index">' + trip.name +'</p>');
+                  var cost = $('<p id="index">$' + trip.cost + ' USD</p>');
+                  var locale = $('<p id="index">  ' + trip.destination + '</p>');
+                  var land = $('<p id="index">  '  + trip.continent + ' </p></li>');
+                  var week = $('<p id="index">  ' + trip.weeks + '  Weeks </p>');
+                  var title = $('<p id="index"> More about this trip:');
+                  var about = $('<p id = "bold">'+ trip.about + ' </p>');
 
-  var showFailure = function(xhr) {
-    var section = $('.details');
-    section.html('<strong>Error has occurred</strong>');
 
-    toggleTableView(true);
-  };
+                  section.empty(); // Reset the HTML in case there is data from before
+                  row.append(id, name, cost, locale, week, title, about);
+                  section.append(row);
+                  toggleTableView(false);
+                };
 
-  $('.index-body').on('click', 'a', function(e) {
-    e.preventDefault();
 
-    var id = $(this).attr('id');
-    var showUrl = url + '/' + id;
-    $.get(showUrl, showSuccess)
-      .fail(showFailure);
-  });
-});
+                var showFailure = function(xhr) {
+                  var section = $('.details');
+                  section.html('<strong>Error has occurred</strong>');
 
-//POST
+                  toggleTableView(true);
+                };
 
-//   var postCallback = function() {
-//     alert("POST worked just fine!");
-//   };
-//
-//   var addPetCallback = function(event) {
-//     // The default action on submit is to refresh
-//     // the page! Not what we want!
-//     event.preventDefault();
-//
-//     console.log("Sending pet data!");
-//
-//     // jQuery knows how to take form data and turn
-//     // it into something we can send with our POST
-//     // request. This process is called serialization.
-//     var petData = $(this).serialize();
-//
-//     console.log("Pet data is " + petData);
-//
-//     // Send the POST. Just like GET, but with data!
-//     $.post(url, petData, postCallback);
-//   };
-//
-//   // We'll attach ourselves to the "submit" event
-//   // on our input form. It has a few differences from
-//   // waiting for a click on a button:
-//   //   * The event happens on the form, not the button,
-//   //       so we'll have access to form data
-//   //   * Submit can be triggered by clicking the button
-//   //       or by pressing enter
-//   $('#add-pet-form').submit(addPetCallback);
+                $('.index-body').on('click', 'a', function(e) {
+                  e.preventDefault();
+
+                  var id = $(this).attr('id');
+                  var showUrl = url + '/' + id;
+                  $.get(showUrl, showSuccess)
+                  .fail(showFailure);
+                });
+
+                $('form').submit(function(e) {
+                  // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
+                  e.preventDefault();
+
+                  var urlN = $(this).attr("action"); // Retrieve the action from the form
+                  var newData = $(this).serialize();
+
+                  $.post(urlN, newData, function(response){
+                    $('#newTrip').html('<p> Success! </p>');
+                    console.log(response);
+                  })
+
+                  .fail(function(){
+                    $('#newTrip').html('<p>Failure</p>');
+                  });
+
+
+                  $('form').submit(function(e) {
+                    // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
+                    e.preventDefault();
+
+                    var urlR = $(this).attr("action"); // Retrieve the action from the form
+                    var reserveData = $(this).serialize();
+
+                    $.post(urlR, reserveData, function(response){
+                      $('#reserve').html('<p> Success! </p>');
+                      console.log(response);
+                    })
+                        .fail(function(){
+                      $('#reserve').html('<p>Failure</p>');
+                    });
+
+
+
+                  //New Post
+                    var postCallback = function() {
+                      alert("Your trip has been added to the index");
+                    };
+
+                    var addPostCallback = function(event) {
+                      event.preventDefault();
+                      console.log("Sending Your Trip Details!");
+
+                    var newTrip = $(this).serialize();
+                      console.log(newTrip);
+
+                      // Send the POST. Just like GET, but with data!
+                      $.post(url, newTrip, postCallback);
+                    };
+
+                    $('#newTrip').submit(addPostCallback);
+                  });
+                    });
+                      });
