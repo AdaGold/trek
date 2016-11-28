@@ -101,48 +101,47 @@ $(document).ready(function() {
                   .fail(showFailure);
                 });
 
-                $('form').submit(function(e) {
+                $('#addForm').submit(function(e) {
                   // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
                   e.preventDefault();
 
-                  var urlN = $(this).attr("action"); // Retrieve the action from the form
+                  var urlAdd = $(this).attr("action"); // Retrieve the action from the form
                   var newData = $(this).serialize();
 
-                  $.post(urlN, newData, function(response){
-                    $('#newTrip').html('<p> Success! </p>');
+                  $.post(urlAdd, newData, function(response){
+                    $('#addForm').html('<p> Success! </p>');
                     console.log(response);
                   })
 
                   .fail(function(){
-                    $('#newTrip').html('<p>Failure</p>');
+                    $('#addForm').html('<p>Failure</p>');
                   });
 
 
-                  $('form').submit(function(e) {
+                  $('#addForm').submit(function(e) {
                     // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
                     e.preventDefault();
 
-                    var urlR = $(this).attr("action"); // Retrieve the action from the form
-                    var reserveData = $(this).serialize();
+                    var urlAdd = $(this).attr("action"); // Retrieve the action from the form
+                    var add = $(this).serialize();
 
-                    $.post(urlR, reserveData, function(response){
-                      $('#reserve').html('<p> Success! </p>');
+                    $.post(urlAdd, add, function(response){
+                      $('#addForm').html('<p> Success! </p>');
                       console.log(response);
                     })
                         .fail(function(){
-                      $('#reserve').html('<p>Failure</p>');
+                      $('#addForm').html('<p>Failure</p>');
+                      toggleTripReservation(false);
                     });
 
-
-
-                  //New Post
+                  //RESERVING THE TRIP
                     var postCallback = function() {
-                      alert("Your trip has been added to the index");
+                      alert("You are getting booked");
                     };
 
                     var addPostCallback = function(event) {
                       event.preventDefault();
-                      console.log("Sending Your Trip Details!");
+                      console.log("Get your luggage out!");
 
                     var newTrip = $(this).serialize();
                       console.log(newTrip);
@@ -151,7 +150,8 @@ $(document).ready(function() {
                       $.post(url, newTrip, postCallback);
                     };
 
-                    $('#newTrip').submit(addPostCallback);
+                    $('#reserve').submit(addPostCallback);
+                    toggleTripReservation(true);
                   });
                     });
                       });
