@@ -33,14 +33,6 @@ $(document).ready(function() {
   });
 
 
-  // var reservationsCallback = function (response) {
-  //   for (var i=0; i < response.length; i++) {
-  //     $('#reservations').append("<h2><a href=" + url + "/trips/" + response[i].id + " > " + response[i].name + "</a></h2>");
-  //   }
-  // };
-
-  // how is .click in comparison?
-
   $('form').submit(function(e) {
     e.preventDefault();
 
@@ -52,21 +44,6 @@ $(document).ready(function() {
       console.log(response);
       $('#message').html('Your reservation is good to go!');
     })
-      // $('#reservation_form').hide();
 
-
-      // .fail(function(){
-      // $('#message').html('<p>Adding trip failed</p>');
-    });
   });
-
-  //     $.ajax({
-  //     type: "POST",
-  //     data: formData,
-  //     cache: false,
-  //     url: url,
-  //     success: function(data)
-  //     {
-  //       console.log(data)
-  //     }
-  // });
+});
