@@ -1,35 +1,36 @@
 
-/*= require foundation
-
-.body, .container{
+h1, .pbody, .list, .always, .index-body, .reservation, .details{
   margin: 5px 10px;
-  background-color: #F4F4F4;
-  color: slategray;
+  font: italic 40px/20px serif, Georgia;
 }
-.callout-large,.heading{
-  margin: 10px 15px;
+
+a, .small.expanded.button.buttons:hover{
+  background-color: #99E2EE;
+  border-color: #C5C4C2;
+  color: #B3B2A9;
+  font: italic 15px Georgia;
+}
+
+a, .small.expanded.button.buttons{
+  display: inline-block;
   list-style-type: none;
   list-style: none;
-  border: solid 5px #EFD581;
-  text-align: center;
-  font-family: sans-serif;
+  border: solid 5px #99E2EE;
+  font: italic 15px serif;
+  color: #D4D3D1;
 }
-.title {
-  display: inline-block;
-  font-family: sans-serif;
-  width: 80%;
-  color: #A5A5AF;
-  background-color: #4484CE;
+
+.buttons:hover, .buttons#index:hover{
+  color: #03B1F4;
+  border: solid 5px #D4D3D1;
+  background-color: #99E2EE;
 }
-.title:hover{
-  background-color: #373737;
-}
-.button-details{
-  display: inline-block;
-  width: 30%;
-  margin: 10px;
-  background-color: #BDBABA;
-}
-.button-details:hover{
-  background-color: #DCD0C0;
+
+a#index, .title, .large.expanded.button.hollow.buttons{
+  width: 90%;
+  margin: 2% 4%;
+  color: #03B1F4;
+  border: solid 5px #99E2EE;
+  background-color: #D4D3D1;
+  font: italic 40px/20px serif, Georgia;
 }

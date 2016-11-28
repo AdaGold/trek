@@ -7,63 +7,67 @@ $(document).ready(function() {
     console.log(xhr);
   };
 
+  //seed the images with a random source
+  var pik = function(max = Math.floor((Math.random() * 15) + 1)){
+    this.max = max;
+    return this.max;
+  };
+
   // What do we want to happen when we get our response?
   ///index view toggle table
   var successCallback = function (response) {
-    console.log('success!');
 
+    console.log('success!');
     var body = $('.index-body');
+
     body.empty(); // Clear this out to start with to ensure we are populating fresh
 
     $.each(response, function(index, trip){
       //index page on click
+      var file = ".jpeg";
       var row = $('<tr></tr>');
-      var pic = $('<td><img class="img"' + ' src= "'+ trip.img + '"' + 'style="width:304px;height:228px;">');
-      var name = $('<a href="#" id=' + trip.id + '>' + trip.name +'</a>');
+      var pic = $('<td><img class="img"' + ' src= "css/images/'+ pik() + file +'"' + 'style="width:304px;height:228px;">');
+      var name = $('<a href="#" class="small expanded button buttons" id=' + trip.id + '>' + trip.name +'</a><br/>');
       var destination = $('<td>' + '</td>');
-
-
       row.append(name, pic, destination);
       body.append(row);
-
 
     });
 
     toggleTableView(true);
   };
 
-  $('#index').click(function() {
+  $('#loadTrips').click(function() {
     $.get(url, successCallback)
-      .fail(failCallback);
+    .fail(failCallback);
   });
 
   var toggleTableView = function(onIndicator) {
-    $('#index').toggle(!onIndicator);
     $('#details').toggle(!onIndicator);
-    $('#reservation').toggle(onIndicator);
+    $('button').toggle(!onIndicator);
+    $('table').toggle(onIndicator);
   };
 
   var showSuccess = function(trip) {
-    var section = $('.details');
-    var name = $('<div>' + trip.id + '<strong>Trip</strong>' + trip.name + '</div>');
-    var locale = $('<strong>Breed</strong><div>' + trip.destination + trip.continent + '</div>');
-    var cost = $('<strong>Age</strong><div>' + trip.cost + '</div>');
-    var about = $('<strong>Owner</strong><div>' + trip.about + '</div>');
-    var week = $('<strong>Owner</strong><div>' + trip.weeks + '</div>');
-
+    var section = $('#details');
+    var row = $('<tr></tr>');
+    var name = $('<div>' + trip.id + '<strong>' + trip.name + '</strong></div>');
+    var locale = $('<div>' + trip.destination + trip.continent + '</strong></div>');
+    var cost = $('<strong>' + trip.cost + '</strong></div>');
+    var about = $('<div><strong>' + trip.about + '</strong></div>');
+    var week = $('<div><strong>' + trip.weeks + '</strong></div>');
 
     section.empty(); // Reset the HTML in case there is data from before
     section.append(name, locale, cost, about, week);
 
     toggleTableView(false);
-
   };
 
   var showFailure = function(xhr) {
     var section = $('.details');
     section.html('<strong>Error has occurred</strong>');
 
-    toggleTableView(false);
+    toggleTableView(true);
   };
 
   $('.index-body').on('click', 'a', function(e) {
@@ -76,8 +80,8 @@ $(document).ready(function() {
   });
 });
 
-//
-//   // POST STUFF (from Wednesday w/ Dan)
+//POST
+
 //   var postCallback = function() {
 //     alert("POST worked just fine!");
 //   };
