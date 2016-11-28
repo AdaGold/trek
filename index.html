@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TREK</title>
+    <link rel="stylesheet" href="styles.css"/>
+  </head>
+  <body>
+
+    <button id="load">Go on an adventure!</button>
+
+        <div id="package">
+          <h2 id="name"></h2>
+          <h3 id="category"></h3>
+          <h3 id="weeks"></h3>
+          <h3 id="cost"></h3>
+          <h4 id="id"></h4>
+          <p id="about"></p>
+
+          <form action="https://trektravel.herokuapp.com/trips" method="POST" id="reservation_form">
+          <h3>Enter your name to join this trip:  </h3><input name='name'/>
+          <button id="reservations" type="submit"> Add me to this trip! </button>
+          <h3 id="message"></h3>
+        </div>
+
+        <div id="trips"></div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts.js"></script>
+
+
+  </body>
+</html>
