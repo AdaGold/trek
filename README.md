@@ -22,8 +22,8 @@ View the [Travel API's documentation](https://github.com/ada-c6/trip_api).
 
 
 ## Optional Enhancements
-  - **For more practice with showing a list of Many Trips**, Show trips by search queries (like by continent, budget, etc.). Will need to explore API to see what functionality exists. 
-  - **To practice a more advanced POST**, Setup the functionalit to create a new trip. 
-  - **For more JQuery Practice**, Use Jquery to resort list of trips by specific attributes, like budget or time remaining. 
-  - **For an extra challenge**, Have the number of spots available update on a page automatically if another user were to reserve a spot while you were viewing that trip.
+  - **For more practice working with data**, filter trips by search queries (like by continent, budget, etc.). You'll need to explore API to see what functionality exists. 
+  - **To practice a more advanced POST**, allow the user to create a new trip. 
+  - **For more JQuery Practice**, use jQuery to sort list of trips by specific attributes, like budget or time remaining. 
+  - **For an extra challenge**, have the number of spots available update on a page automatically if another user were to reserve a spot while you were viewing that trip.
   
