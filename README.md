@@ -31,6 +31,7 @@ View the [Travel API's documentation](https://github.com/ada-c6/trip_api).
   - Any dynamic elements on you page shall be rendered using Underscore templates
   - Any errors encountered while interacting with the API shall be politely reported to the user
   - You shall use HTML best-practices. You should organize your HTML by grouping content using semantic HTML tags.
+  - Site should be attractively styled, using Foundation for a responsive grid layout
 
 
 ## Optional Enhancements
