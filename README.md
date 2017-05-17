@@ -19,7 +19,7 @@ All of this should be done without ever having to reload the page. In other word
 
 ## The API
 
-View the [Travel API's documentation](https://github.com/ada-c6/trip_api).
+View the [Travel API's documentation](https://github.com/AdaGold/trip_api).
 
 ## Requirements
 - **Wave 1** Click button or link to show all trips
