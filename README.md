@@ -28,7 +28,7 @@ View the [Travel API's documentation](https://github.com/AdaGold/trip_api).
 - **Wave 3** While viewing a single trip, you can reserve a spot
   - Use a form to submit your name to reserve a spot on the trip you are viewing
 - **For All Waves**
-  - Any dynamic elements on you page shall be rendered using Underscore templates
+  - Any dynamic elements on the page shall be rendered using Underscore templates
   - Any errors encountered while interacting with the API shall be politely reported to the user
   - You shall use HTML best-practices. You should organize your HTML by grouping content using semantic HTML tags.
   - Site should be attractively styled, using Foundation for a responsive grid layout
@@ -36,7 +36,7 @@ View the [Travel API's documentation](https://github.com/AdaGold/trip_api).
 
 ## Optional Enhancements
 
-- **For more practice working with data**, filter trips by search queries (like by continent, budget, etc.). You'll need to explore API to see what functionality exists.
+- **For more practice working with data**, filter trips by search queries (like by continent, budget, etc.). You'll need to explore the API to see what functionality exists.
 - **To practice a more advanced POST**, allow the user to create a new trip.
 - **For more jQuery practice**, use jQuery to sort list of trips by specific attributes, like budget or time remaining.
 - **For an extra challenge**, have the number of spots available update on a page automatically if another user were to reserve a spot while you were viewing that trip.
