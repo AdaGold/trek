@@ -1,0 +1,12 @@
+li{
+  list-style-type: none;
+}
+
+
+#trips li div {
+  margin: 2%;
+  background-color: blue;
+  text-align: center;
+  border-radius: 5%;
+  height: 90%;
+}
