@@ -4,15 +4,12 @@ $(document).ready(function(){
   // change api to have australiasia be australia
   var continents = ['Asia', 'Africa', 'Europe', 'South America', 'North America', 'Antartica', 'Australasia'];
 
-  var budgets = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000];
-
   for (i = 0; i < continents.length; i++) {
     $("#see-trips-by-continent").append("<li><a class='success button' href=" + continents[i] + ">" + continents[i] + "</a></li>");
   }
 
-
-  for (i = 0; i < budgets.length; i++) {
-    $("#see-trips-by-budget").append("<li><a class='success button' href=" + budgets[i] + ">" + budgets[i] + "</a></li>");
+  for (i = 500; i <= 4000; i+= 500) {
+    $("#see-trips-by-budget").append("<li><a class='success button' href=" + i + ">" + i + "</a></li>");
   }
 
   var showTrips = function(response) {
