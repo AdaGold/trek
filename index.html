@@ -13,20 +13,29 @@
         <li><button id="see-trips" class="success button">See Open Trips</button></li>
         <li><button id="see-reservations" class="success button">Your Reservations</button></li>
       </ul>
+      <section id="messages"></section>
     </header>
     <main>
-      <!-- Wrap in Underscore template -->
-      <section id="trips">
-        <h2> All Available Trips </h2>
-        <ul class="row small-up-2 medium-up-4 large-up-6" data-equalize>
-        </ul>
+
+      <section id="see-reservations-by-email">
+        <h3> Reservations </h3>
+        <form id="form-test">
+          <h4> Enter your email to view your reserved trips </h4>
+          <label for="email"> Email: </label>
+          <input type="text" name="email">
+          <button type="submit" class="success button"> Submit </button>
+        </form>
+
+        <section id="reservations">
+          <h4> Your Reservations </h4>
+          <ul>
+          </ul>
+        </section>
       </section>
-      <!-- / -->
-
-
       <!-- Wrap in Underscore template -->
       <article id="trip">
-        <h2 id="message"></h2>
+        <a href="" id="close-trip"> Hide Trip </a>
+
         <h3 id="trip-name"></h3>
         <p id="trip-continent"></p>
         <p id="trip-category"></p>
@@ -34,9 +43,34 @@
         <p id="trip-weeks"> </p>
         <p id="trip-cost"> </p>
         <p id="trip-spots"> </p>
+
+        <form id="reserve-form">
+          <label for="name"> Name: </label>
+          <input type="text" name="name">
+
+          <label for="age"> Age: </label>
+          <input type="text" name="age">
+
+          <label for="email"> Email: </label>
+          <input type="text" name="email">
+          <button type="submit" class="success button"> Reserve! </button>
+        </form>
       </article>
       <!-- / -->
 
+
+
+      <!-- Wrap in Underscore template -->
+      <h2> All Available Trips </h2>
+      <ul id="see-trips-by-continent">
+      </ul>
+      <ul id="see-trips-by-budget">
+      </ul>
+      <section id="trips">
+        <ul class="row small-up-2 medium-up-4 large-up-6" data-equalize>
+        </ul>
+      </section>
+      <!-- / -->
     </main>
     <footer>
     </footer>
