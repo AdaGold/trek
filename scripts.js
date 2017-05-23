@@ -25,6 +25,8 @@ $(document).ready(function(){
 
   var tripShow = function(response) {
     $('#trip-name').html(response.name);
+    var reservationUrl = url + '/' + response.id +'/reserve';
+    $('#reserve-form').attr("action", reservationUrl);
   }; //tripShow()
 
   $('#see-trips').click(function() {
@@ -34,15 +36,34 @@ $(document).ready(function(){
 
   $('#see-trips-by-continent').on('click', 'a', function(e) {
     e.preventDefault();
-    console.log("hey");
     var continentUrl = url + '/continent?query=' + $(this).attr('href');
     $.get(continentUrl, showTrips);
   });
 
+  $('#see-trips-by-budget').on('click', 'a', function(e) {
+    e.preventDefault();
+    var continentUrl = url + '/budget?query=' + $(this).attr('href');
+    $.get(continentUrl, showTrips);
+  });
+
+
+
   $('#reserve-form').submit(function(event) {
     event.preventDefault();
-    $('#messages').append("<h3>Reservation Made!</h3");
+    var formData = $(this).serialize();
+    var reserveUrl = $(this).attr('action');
+    // console.log(reserveUrl);
+    $.post(reserveUrl, formData, function(response){
+      $('#messages').append("<h3>Reservation Made!</h3");
+      $('#reserve-form').hide();
+    });
   });
+
+  var success = function(){
+    $('#messages').append("<h3>Reservation Made!</h3");
+  };
+
+
 
   $('#close-trip').on('click', function(e){
     e.preventDefault();
@@ -54,10 +75,10 @@ $(document).ready(function(){
     $('#see-reservations-by-email').show();
   });
 
-  $('#form-test').submit(function(event) {
+  $('#see-reservations-form').submit(function(event) {
     event.preventDefault();
-    var email = $('#form-test').serializeArray()[0]["value"];
-    $('#form-test').hide();
+    var email = $('#see-reservations-form').serializeArray()[0]["value"];
+    $('#see-reservations-form').hide();
     $('#reservations').show();
     var reservationUrl = "https://trektravel.herokuapp.com/reservations"
     $.post(reservationUrl, {email: email}, function(data){
@@ -68,6 +89,17 @@ $(document).ready(function(){
       alert("Page Not Found");
     });
   });
+
+  $('#reservations ul').on('click', 'a', function(e) {
+    e.preventDefault();
+    $('#trip').show();
+    var tripId = $(this).attr('href');
+    var tripUrl = url + '/' + tripId;
+    var trip = $.get(tripUrl, tripShow).fail(function() {
+      alert("Page Not Found");
+    });//get tripURL .fail
+  }); // see-trips.click
+
 
 
   $('#trips ul').on('click', 'a', function(e) {
