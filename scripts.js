@@ -12,6 +12,8 @@ $(document).ready(function(){
     $("#see-trips-by-budget").append("<li><a class='success button' href=" + i + ">" + i + "</a></li>");
   }
 
+var tripShowTemplate = _.template($('#trip-show-template').html());
+
   var showTrips = function(response) {
     $("#trips ul").html(" ");
     for (var i = 0; i < response.length; i++) {
@@ -24,10 +26,21 @@ $(document).ready(function(){
 
 
   var tripShow = function(response) {
-    $('#trip-name').html(response.name);
-    var reservationUrl = url + '/' + response.id +'/reserve';
-    $('#reserve-form').show();
-    $('#reserve-form').attr("action", reservationUrl);
+    var generatedHtml = tripShowTemplate({
+      data: {
+        name: response.name,
+        cost: response.cost,
+        weeks: response.weeks,
+        continent: response.continent,
+        category: response.category,
+        about: response.about
+      }
+    });
+    $('#trip-show').append($(generatedHtml));
+    // $('#trip-name').html(response.name);
+    // var reservationUrl = url + '/' + response.id +'/reserve';
+    // $('#reserve-form').show();
+    // $('#reserve-form').attr("action", reservationUrl);
   }; //tripShow()
 
   $('#see-trips').click(function() {
@@ -62,10 +75,10 @@ $(document).ready(function(){
 
 
 
-  $('#close-trip').on('click', function(e){
+  $('#trip-show').on('click', 'a', function(e){
     e.preventDefault();
     $('#messages').html(" ");
-    $('#trip').hide();
+    $('#trip-show').hide();
   });
 
   $('#see-reservations').on('click', function(e) {

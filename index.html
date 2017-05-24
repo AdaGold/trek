@@ -33,32 +33,26 @@
         </section>
       </section>
       <!-- Wrap in Underscore template -->
-      <article id="trip">
-        <a href="" id="close-trip"> Hide Trip </a>
+      <script id="trip-show-template" type="text/template">
+        <article>
+          <h5><a id="close-trip"> Hide Trip </a></h5>
 
-        <h3 id="trip-name"></h3>
-        <p id="trip-continent"></p>
-        <p id="trip-category"></p>
-        <p id="trip-about"></p>
-        <p id="trip-weeks"> </p>
-        <p id="trip-cost"> </p>
-        <p id="trip-spots"> </p>
+          <h3><%- data.name %></h3>
 
-        <form id="reserve-form" action="">
-          <label for="name"> Name: </label>
-          <input type="text" name="name">
+          <ul>
+            <li><h4>Cost: <%- data.cost %></h4></li>
+            <li><h4>Weeks: <%- data.weeks %></h4></li>
+            <li><p>Continent: <%- data.continent %></p></li>
+            <li><p>Category: <%- data.category %></p></li>
+            <li><p>Spots Available: <%- data.continent %></p></li>
+          </ul>
+          <p><%- data.about %></p>
 
-          <label for="age"> Age: </label>
-          <input type="text" name="age">
+          <button class="success button"> Reserve a spot! </button>
+        </article>
+      </script>
 
-          <label for="email"> Email: </label>
-          <input type="text" name="email">
-          <button type="submit" class="success button"> Reserve! </button>
-        </form>
-      </article>
-      <!-- / -->
-
-
+      <section id="trip-show"></section>
 
       <!-- Wrap in Underscore template -->
       <h2> All Available Trips </h2>
@@ -74,9 +68,9 @@
     </main>
     <footer>
     </footer>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js">
-    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js"></script>
 
     <script type="text/javascript" src="scripts.js"></script>
   </body>
