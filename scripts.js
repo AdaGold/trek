@@ -3,6 +3,7 @@ $(document).ready(function(){
   var tripShowTemplate = _.template($('#trip-show-template').html());
   var tripsByContinentTemplate = _.template($('#trips-by-continent-template').html());
   var tripsByBudgetTemplate = _.template($('#trips-by-budget-template').html());
+  var userReservationsTemplate = _.template($('#user-reservations-template').html());
 
   var url = 'https://trektravel.herokuapp.com/trips';
 
@@ -88,14 +89,17 @@ $(document).ready(function(){
 
   $('#see-reservations-form').submit(function(event) {
     event.preventDefault();
-    var email = $('#see-reservations-form').serializeArray()[0]["value"];
     $('#see-reservations-form').hide();
     $('#reservations').show();
-    var reservationUrl = "https://trektravel.herokuapp.com/reservations"
+
+    var email = $('#see-reservations-form').serializeArray()[0]["value"];
+    var reservationUrl = "https://trektravel.herokuapp.com/reservations";
+
     $.post(reservationUrl, {email: email}, function(data){
-      for(i=0; i < data.length; i++){
-        $('#reservations ul').append("<li><a href="+ data[i].id + ">" + data[i].name + "</li>");
-      }
+        var trips = userReservationsTemplate({reservations: data});
+      // for(i=0; i < data.length; i++){
+      //   $('#reservations ul').append("<li><a href="+ data[i].id + ">" + data[i].name + "</li>");
+      // }
     }).fail(function() {
       alert("Reservations Not Found");
     });

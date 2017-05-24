@@ -97,9 +97,16 @@
     </script>
 
     <script id="user-reservations" type="text/template">
-      <!-- <h4> Your Reservations </h4>
+      <h4> Your Reservations </h4>
       <ul>
-      </ul> -->
+      <% for (var i = 0; i < reservations.length; i++) { %>
+        <li>
+          <a href=<%- reservations[i].id %>>
+            <%- reservations[i].name
+          </a>
+        </li>
+      <% } %>
+      </ul>
     </script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
