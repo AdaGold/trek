@@ -5,7 +5,7 @@ $(document).ready(function(){
   var continents = ['Asia', 'Africa', 'Europe', 'South America', 'North America', 'Antartica', 'Australasia'];
 
   for (i = 0; i < continents.length; i++) {
-    $("#see-trips-by-continent").append("<li><a class='success button' href=" + continents[i] + ">" + continents[i] + "</a></li>");
+    $("#see-trips-by-continent").append("<li><a class='success button' href=" + continents[i].replace(/\s+/g, '%20') + ">" + continents[i] + "</a></li>");
   }
 
   for (i = 500; i <= 4000; i+= 500) {
@@ -26,6 +26,7 @@ $(document).ready(function(){
   var tripShow = function(response) {
     $('#trip-name').html(response.name);
     var reservationUrl = url + '/' + response.id +'/reserve';
+    $('#reserve-form').show();
     $('#reserve-form').attr("action", reservationUrl);
   }; //tripShow()
 
@@ -58,10 +59,6 @@ $(document).ready(function(){
       $('#reserve-form').hide();
     });
   });
-
-  var success = function(){
-    $('#messages').append("<h3>Reservation Made!</h3");
-  };
 
 
 
