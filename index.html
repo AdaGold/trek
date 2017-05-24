@@ -10,68 +10,78 @@
     <header>
       <h1> Trek </h1>
       <ul>
-        <li><button id="see-trips" class="success button">See Open Trips</button></li>
+        <li><button id="see-trips" class="success button">All Trips</button></li>
         <li><button id="see-reservations" class="success button">Your Reservations</button></li>
       </ul>
       <section id="messages"></section>
     </header>
     <main>
-
-      <section id="see-reservations-by-email">
-        <h3> Reservations </h3>
-        <form id="see-reservations-form">
-          <h4> Enter your email to view your reserved trips </h4>
-          <label for="email"> Email: </label>
-          <input type="text" name="email">
-          <button type="submit" class="success button"> Submit </button>
-        </form>
-
-        <section id="reservations">
-          <h4> Your Reservations </h4>
-          <ul>
-          </ul>
-        </section>
-      </section>
-      <!-- Wrap in Underscore template -->
-      <script id="trip-show-template" type="text/template">
-        <article>
-          <h5><a id="close-trip"> Hide Trip </a></h5>
-
-          <h3><%- data.name %></h3>
-
-          <ul>
-            <li><h4>Cost: <%- data.cost %></h4></li>
-            <li><h4>Weeks: <%- data.weeks %></h4></li>
-            <li><p>Continent: <%- data.continent %></p></li>
-            <li><p>Category: <%- data.category %></p></li>
-            <li><p>Spots Available: <%- data.continent %></p></li>
-          </ul>
-          <p><%- data.about %></p>
-
-          <button class="success button"> Reserve a spot! </button>
-        </article>
-      </script>
-
+      <section id="see-reservations-by-email"></section>
+      <section id="reservations"></section>
       <section id="trip-show"></section>
+      <section id="trips-by-continent"></section>
+      <section id="trips-by-budget"></section>
+      <section id="trips"></section>
+    </main>
+    <footer>
+    </footer>
 
-      <!-- Wrap in Underscore template -->
-      <h2> All Available Trips </h2>
+
+    <!-- TEMPLATES  -->
+
+    <script id="trips-by" type="text/template">
       <ul id="see-trips-by-continent">
       </ul>
       <ul id="see-trips-by-budget">
       </ul>
-      <section id="trips">
-        <ul class="row small-up-2 medium-up-4 large-up-6" data-equalize>
+    </script>
+
+    <script id="trips-template" type="text/template">
+      <h2> Available Trips </h2>
+      <ul class="row small-up-2 medium-up-4 large-up-6" data-equalize>
+        <% for( ) %>
+      </ul>
+    </script>
+
+
+    <script id="trip-show-template" type="text/template">
+      <article>
+        <h5><a id="close-trip"> Hide Trip </a></h5>
+
+        <h3><%- data.name %></h3>
+
+        <ul>
+          <li><h4>Cost: <%- data.cost %></h4></li>
+          <li><h4>Weeks: <%- data.weeks %></h4></li>
+          <li><p>Continent: <%- data.continent %></p></li>
+          <li><p>Category: <%- data.category %></p></li>
+          <li><p>Spots Available: <%- data.continent %></p></li>
         </ul>
-      </section>
-      <!-- / -->
-    </main>
-    <footer>
-    </footer>
+        <p><%- data.about %></p>
+
+        <button class="success button"> Reserve a spot! </button>
+      </article>
+    </script>
+
+    <script id="reservation-form-template" type="text/template">
+      <h3> Reservations </h3>
+      <form id="see-reservations-form">
+        <h4> Enter your email to view your reserved trips </h4>
+        <label for="email"> Email: </label>
+        <input type="text" name="email">
+        <button type="submit" class="success button"> Submit </button>
+      </form>
+    </script>
+
+    <script id="user-reservations" type="text/template">
+      <h4> Your Reservations </h4>
+      <ul>
+      </ul>
+    </script>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js"></script>
-
     <script type="text/javascript" src="scripts.js"></script>
   </body>
 </html>
