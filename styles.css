@@ -10,6 +10,6 @@ li{ list-style-type: none; }
   height: 90%;
 }
 
-#see-trips-by-continent li, #see-trips-by-budget li{
+#trips-by-continent li, #trips-by-budget li{
   display: inline-block;
 }

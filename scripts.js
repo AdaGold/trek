@@ -4,20 +4,16 @@ $(document).ready(function(){
   var tripsByBudgetTemplate = _.template($('#trips-by-budget-template').html());
 
   var url = 'https://trektravel.herokuapp.com/trips';
-  var maxBudget = 4000;
+
+  var maxBudget = tripsByBudgetTemplate({ data: { maxBudget: 4000 }});
   var continents = tripsByContinentTemplate({
     data: {
       continents: ['Asia', 'Africa', 'Europe', 'South America', 'North America', 'Antartica', 'Australasia']
     }
   });
 
-
-
-
-  for (i = 500; i <= 4000; i+= 500) {
-    $("#see-trips-by-budget").append("<li><a class='success button' href=" + i + ">" + i + "</a></li>");
-  }
   $('#trips-by-continent').append($(continents));
+  $('#trips-by-budget').append($(maxBudget));
 
   var showTrips = function(response) {
     $("#trips ul").html(" ");

@@ -36,13 +36,18 @@
              <a class="success button" href=<%-data.continents[i].replace(/\s+/g, '%20') %>>
              <%-data.continents[i] %>
            </a>
-         </li> 
+         </li>
         <% } %>
     </script>
 
     <script id="trips-by-budget-template" type="text/template">
       </ul>
       <ul id="trips-by-budget">
+        <% for (var i = 500; i < data.maxBudget; i+=500) { %>
+           <li>
+             <a class="success button" href=<%- i %>><%- i %></a>
+         </li>
+        <% } %>
       </ul>
     </script>
 
