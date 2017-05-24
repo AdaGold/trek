@@ -55,7 +55,15 @@
     <script id="trips-template" type="text/template">
       <h2> Available Trips </h2>
       <ul class="row small-up-2 medium-up-4 large-up-6" data-equalize>
-        <% for( ) %>
+        <% for (var i = 0; i < trips.length; i++) { %>
+          <li data-equalizer-watch class='column see-trip'>
+            <div>
+              <h3>
+                <a href=<%- trips[i].id %>> <%- trips[i].name  %> </a>
+              </h3>
+            </div>
+          </li>
+        <% } %>
       </ul>
     </script>
 
@@ -80,19 +88,19 @@
     </script>
 
     <script id="reservation-form-template" type="text/template">
-      <h3> Reservations </h3>
+      <!-- <h3> Reservations </h3>
       <form id="see-reservations-form">
         <h4> Enter your email to view your reserved trips </h4>
         <label for="email"> Email: </label>
         <input type="text" name="email">
         <button type="submit" class="success button"> Submit </button>
-      </form>
+      </form> -->
     </script>
 
     <script id="user-reservations" type="text/template">
-      <h4> Your Reservations </h4>
+      <!-- <h4> Your Reservations </h4>
       <ul>
-      </ul>
+      </ul> -->
     </script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>

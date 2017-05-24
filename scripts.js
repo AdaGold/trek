@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  var tripsTemplate = _.template($('#trips-template').html());
   var tripShowTemplate = _.template($('#trip-show-template').html());
   var tripsByContinentTemplate = _.template($('#trips-by-continent-template').html());
   var tripsByBudgetTemplate = _.template($('#trips-by-budget-template').html());
@@ -15,13 +16,17 @@ $(document).ready(function(){
   $('#trips-by-continent').append($(continents));
   $('#trips-by-budget').append($(maxBudget));
 
+
   var showTrips = function(response) {
-    $("#trips ul").html(" ");
+    $("#trips ul").empty();
     for (var i = 0; i < response.length; i++) {
-        $("#trips ul").append(
-          "<li data-equalizer-watch class='column see-trip'><div><h3><a href=" + response[i].id + ">"
-          + response[i].name + "</a></h3></div></li>"); //end append
-    } //for
+      console.log(response[i]);
+    }
+    var trips = tripsTemplate({
+        trips: response
+    });
+
+    $("#trips").append(trips);
     matchHeight();
   }; //showTrips
 
@@ -38,24 +43,22 @@ $(document).ready(function(){
       }
     });
     $('#trip-show').append($(tripData));
-    // $('#trip-name').html(response.name);
-    // var reservationUrl = url + '/' + response.id +'/reserve';
-    // $('#reserve-form').show();
-    // $('#reserve-form').attr("action", reservationUrl);
   }; //tripShow()
+
+
 
   $('#see-trips').click(function() {
     $.get(url, showTrips);
   });
 
 
-  $('#see-trips-by-continent').on('click', 'a', function(e) {
+  $('#trips-by-continent').on('click', 'a', function(e) {
     e.preventDefault();
     var continentUrl = url + '/continent?query=' + $(this).attr('href');
     $.get(continentUrl, showTrips);
   });
 
-  $('#see-trips-by-budget').on('click', 'a', function(e) {
+  $('#trips-by-budget').on('click', 'a', function(e) {
     e.preventDefault();
     var continentUrl = url + '/budget?query=' + $(this).attr('href');
     $.get(continentUrl, showTrips);
@@ -97,7 +100,7 @@ $(document).ready(function(){
         $('#reservations ul').append("<li><a href="+ data[i].id + ">" + data[i].name + "</li>");
       }
     }).fail(function() {
-      alert("Page Not Found");
+      alert("Reservations Not Found");
     });
   });
 
@@ -107,7 +110,7 @@ $(document).ready(function(){
     var tripId = $(this).attr('href');
     var tripUrl = url + '/' + tripId;
     var trip = $.get(tripUrl, tripShow).fail(function() {
-      alert("Page Not Found");
+      alert("Trip Not Found");
     });//get tripURL .fail
   }); // see-trips.click
 
@@ -119,7 +122,7 @@ $(document).ready(function(){
     var tripId = $(this).attr('href');
     var tripUrl = url + '/' + tripId;
     var trip = $.get(tripUrl, tripShow).fail(function() {
-      alert("Page Not Found");
+      alert("Trip Not Found");
     });//get tripURL .fail
   }); // see-trips.click
 
