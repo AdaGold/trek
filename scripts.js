@@ -1,18 +1,23 @@
 $(document).ready(function(){
-  // URL of the API
-  var url = 'https://trektravel.herokuapp.com/trips';
-  // change api to have australiasia be australia
-  var continents = ['Asia', 'Africa', 'Europe', 'South America', 'North America', 'Antartica', 'Australasia'];
+  var tripShowTemplate = _.template($('#trip-show-template').html());
+  var tripsByContinentTemplate = _.template($('#trips-by-continent-template').html());
+  var tripsByBudgetTemplate = _.template($('#trips-by-budget-template').html());
 
-  for (i = 0; i < continents.length; i++) {
-    $("#see-trips-by-continent").append("<li><a class='success button' href=" + continents[i].replace(/\s+/g, '%20') + ">" + continents[i] + "</a></li>");
-  }
+  var url = 'https://trektravel.herokuapp.com/trips';
+  var maxBudget = 4000;
+  var continents = tripsByContinentTemplate({
+    data: {
+      continents: ['Asia', 'Africa', 'Europe', 'South America', 'North America', 'Antartica', 'Australasia']
+    }
+  });
+
+
+
 
   for (i = 500; i <= 4000; i+= 500) {
     $("#see-trips-by-budget").append("<li><a class='success button' href=" + i + ">" + i + "</a></li>");
   }
-
-var tripShowTemplate = _.template($('#trip-show-template').html());
+  $('#trips-by-continent').append($(continents));
 
   var showTrips = function(response) {
     $("#trips ul").html(" ");
@@ -26,7 +31,7 @@ var tripShowTemplate = _.template($('#trip-show-template').html());
 
 
   var tripShow = function(response) {
-    var generatedHtml = tripShowTemplate({
+    var tripData = tripShowTemplate({
       data: {
         name: response.name,
         cost: response.cost,
@@ -36,7 +41,7 @@ var tripShowTemplate = _.template($('#trip-show-template').html());
         about: response.about
       }
     });
-    $('#trip-show').append($(generatedHtml));
+    $('#trip-show').append($(tripData));
     // $('#trip-name').html(response.name);
     // var reservationUrl = url + '/' + response.id +'/reserve';
     // $('#reserve-form').show();

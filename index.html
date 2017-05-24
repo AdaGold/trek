@@ -29,12 +29,23 @@
 
     <!-- TEMPLATES  -->
 
-    <script id="trips-by" type="text/template">
-      <ul id="see-trips-by-continent">
+    <script id="trips-by-continent-template" type="text/template">
+      <ul id="trips-by-continent">
+        <% for (var i = 0; i < data.continents.length; i++) { %>
+           <li>
+             <a class="success button" href=<%-data.continents[i].replace(/\s+/g, '%20') %>>
+             <%-data.continents[i] %>
+           </a>
+         </li> 
+        <% } %>
+    </script>
+
+    <script id="trips-by-budget-template" type="text/template">
       </ul>
-      <ul id="see-trips-by-budget">
+      <ul id="trips-by-budget">
       </ul>
     </script>
+
 
     <script id="trips-template" type="text/template">
       <h2> Available Trips </h2>
