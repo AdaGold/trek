@@ -16,7 +16,15 @@
       <section id="messages"></section>
     </header>
     <main>
-      <section id="see-reservations-by-email"></section>
+      <section id="see-reservations-by-email">
+        <h3> Find Reservations </h3>
+        <form id="see-reservations-form">
+          <h4> Enter your email to view your reserved trips </h4>
+          <label for="email"> Email: </label>
+          <input type="text" name="email">
+          <button type="submit" class="success button"> Submit </button>
+        </form>
+      </section>
       <section id="reservations"></section>
       <section id="trip-show"></section>
       <section id="trips-by-continent"></section>
@@ -86,17 +94,7 @@
       </article>
     </script>
 
-    <script id="reservation-form-template" type="text/template">
-      <!-- <h3> Reservations </h3>
-      <form id="see-reservations-form">
-        <h4> Enter your email to view your reserved trips </h4>
-        <label for="email"> Email: </label>
-        <input type="text" name="email">
-        <button type="submit" class="success button"> Submit </button>
-      </form> -->
-    </script>
-
-    <script id="user-reservations" type="text/template">
+    <script id="reservations-template" type="text/template">
       <h4> Your Reservations </h4>
       <ul>
       <% for (var i = 0; i < reservations.length; i++) { %>

@@ -3,7 +3,7 @@ $(document).ready(function(){
   var tripShowTemplate = _.template($('#trip-show-template').html());
   var tripsByContinentTemplate = _.template($('#trips-by-continent-template').html());
   var tripsByBudgetTemplate = _.template($('#trips-by-budget-template').html());
-  var userReservationsTemplate = _.template($('#user-reservations-template').html());
+  var userReservationsTemplate = _.template($('#reservations-template').html());
 
   var url = 'https://trektravel.herokuapp.com/trips';
 
