@@ -1,82 +1,129 @@
 $(document).ready(function(){
-  // URL of the API
+  var tripsTemplate = _.template($('#trips-template').html());
+  var tripShowTemplate = _.template($('#trip-show-template').html());
+  var tripsByContinentTemplate = _.template($('#trips-by-continent-template').html());
+  var tripsByBudgetTemplate = _.template($('#trips-by-budget-template').html());
+  var userReservationsTemplate = _.template($('#reservations-template').html());
+
   var url = 'https://trektravel.herokuapp.com/trips';
-  // change api to have australiasia be australia
-  var continents = ['Asia', 'Africa', 'Europe', 'South America', 'North America', 'Antartica', 'Australasia'];
 
-  for (i = 0; i < continents.length; i++) {
-    $("#see-trips-by-continent").append("<li><a class='success button' href=" + continents[i] + ">" + continents[i] + "</a></li>");
-  }
+  var maxBudget = tripsByBudgetTemplate({ data: { maxBudget: 4000 }});
+  var continents = tripsByContinentTemplate({ data: { continents: ['Asia', 'Africa', 'Europe', 'South America', 'North America', 'Antartica', 'Australasia']}});
+  $('#trips-by-continent').append($(continents));
+  $('#trips-by-budget').append($(maxBudget));
 
-  for (i = 500; i <= 4000; i+= 500) {
-    $("#see-trips-by-budget").append("<li><a class='success button' href=" + i + ">" + i + "</a></li>");
-  }
 
   var showTrips = function(response) {
-    $("#trips ul").html(" ");
+    $("#trips ul").empty();
     for (var i = 0; i < response.length; i++) {
-        $("#trips ul").append(
-          "<li data-equalizer-watch class='column see-trip'><div><h3><a href=" + response[i].id + ">"
-          + response[i].name + "</a></h3></div></li>"); //end append
-    } //for
+      console.log(response[i]);
+    }
+    var trips = tripsTemplate({
+        trips: response
+    });
+
+    $("#trips").append(trips);
     matchHeight();
   }; //showTrips
 
 
   var tripShow = function(response) {
-    $('#trip-name').html(response.name);
-  }; //tripShow()
+    $('#trip-show').empty();
+    $('#trip-show').show();
+
+    var tripData = tripShowTemplate({
+      data: {
+        name: response.name,
+        cost: response.cost,
+        weeks: response.weeks,
+        continent: response.continent,
+        category: response.category,
+        about: response.about
+      }
+    });
+
+    $('#trip-show').append($(tripData));
+  }; //tripShow
+
+
 
   $('#see-trips').click(function() {
     $.get(url, showTrips);
   });
 
 
-  $('#see-trips-by-continent').on('click', 'a', function(e) {
+  $('#trips-by-continent').on('click', 'a', function(e) {
     e.preventDefault();
-    console.log("hey");
     var continentUrl = url + '/continent?query=' + $(this).attr('href');
     $.get(continentUrl, showTrips);
   });
 
-  $('#reserve-form').submit(function(event) {
-    event.preventDefault();
-    $('#messages').append("<h3>Reservation Made!</h3");
+  $('#trips-by-budget').on('click', 'a', function(e) {
+    e.preventDefault();
+    var continentUrl = url + '/budget?query=' + $(this).attr('href');
+    $.get(continentUrl, showTrips);
   });
 
-  $('#close-trip').on('click', function(e){
+
+  $('#reserve-form').submit(function(event) {
+    event.preventDefault();
+    var formData = $(this).serialize();
+    var reserveUrl = $(this).attr('action');
+    // console.log(reserveUrl);
+    $.post(reserveUrl, formData, function(response){
+      $('#messages').append("<h3>Reservation Made!</h3");
+      $('#reserve-form').hide();
+    });
+  });
+
+
+  $('#trip-show').on('click', 'a', function(e){
     e.preventDefault();
     $('#messages').html(" ");
-    $('#trip').hide();
+    $('#trip-show').hide();
   });
 
   $('#see-reservations').on('click', function(e) {
     $('#see-reservations-by-email').show();
   });
 
-  $('#form-test').submit(function(event) {
+  $('#see-reservations-form').submit(function(event) {
     event.preventDefault();
-    var email = $('#form-test').serializeArray()[0]["value"];
-    $('#form-test').hide();
+    $('#see-reservations-form').hide();
     $('#reservations').show();
-    var reservationUrl = "https://trektravel.herokuapp.com/reservations"
+
+    var email = $('#see-reservations-form').serializeArray()[0]["value"];
+    var reservationUrl = "https://trektravel.herokuapp.com/reservations";
+
     $.post(reservationUrl, {email: email}, function(data){
-      for(i=0; i < data.length; i++){
-        $('#reservations ul').append("<li><a href="+ data[i].id + ">" + data[i].name + "</li>");
-      }
+        var trips = userReservationsTemplate({reservations: data});
+      // for(i=0; i < data.length; i++){
+      //   $('#reservations ul').append("<li><a href="+ data[i].id + ">" + data[i].name + "</li>");
+      // }
     }).fail(function() {
-      alert("Page Not Found");
+      alert("Reservations Not Found");
     });
   });
 
-
-  $('#trips ul').on('click', 'a', function(e) {
+  $('#reservations ul').on('click', 'a', function(e) {
     e.preventDefault();
     $('#trip').show();
     var tripId = $(this).attr('href');
     var tripUrl = url + '/' + tripId;
     var trip = $.get(tripUrl, tripShow).fail(function() {
-      alert("Page Not Found");
+      alert("Trip Not Found");
+    });//get tripURL .fail
+  }); // see-trips.click
+
+
+
+  $('#trips').on('click', 'a', function(e) {
+    e.preventDefault();
+    $('#trip').show();
+    var tripId = $(this).attr('href');
+    var tripUrl = url + '/' + tripId;
+    var trip = $.get(tripUrl, tripShow).fail(function() {
+      alert("Trip Not Found");
     });//get tripURL .fail
   }); // see-trips.click
 

@@ -10,74 +10,106 @@
     <header>
       <h1> Trek </h1>
       <ul>
-        <li><button id="see-trips" class="success button">See Open Trips</button></li>
+        <li><button id="see-trips" class="success button">All Trips</button></li>
         <li><button id="see-reservations" class="success button">Your Reservations</button></li>
       </ul>
       <section id="messages"></section>
     </header>
     <main>
-
       <section id="see-reservations-by-email">
-        <h3> Reservations </h3>
-        <form id="form-test">
+        <h3> Find Reservations </h3>
+        <form id="see-reservations-form">
           <h4> Enter your email to view your reserved trips </h4>
           <label for="email"> Email: </label>
           <input type="text" name="email">
           <button type="submit" class="success button"> Submit </button>
         </form>
-
-        <section id="reservations">
-          <h4> Your Reservations </h4>
-          <ul>
-          </ul>
-        </section>
       </section>
-      <!-- Wrap in Underscore template -->
-      <article id="trip">
-        <a href="" id="close-trip"> Hide Trip </a>
-
-        <h3 id="trip-name"></h3>
-        <p id="trip-continent"></p>
-        <p id="trip-category"></p>
-        <p id="trip-about"></p>
-        <p id="trip-weeks"> </p>
-        <p id="trip-cost"> </p>
-        <p id="trip-spots"> </p>
-
-        <form id="reserve-form">
-          <label for="name"> Name: </label>
-          <input type="text" name="name">
-
-          <label for="age"> Age: </label>
-          <input type="text" name="age">
-
-          <label for="email"> Email: </label>
-          <input type="text" name="email">
-          <button type="submit" class="success button"> Reserve! </button>
-        </form>
-      </article>
-      <!-- / -->
-
-
-
-      <!-- Wrap in Underscore template -->
-      <h2> All Available Trips </h2>
-      <ul id="see-trips-by-continent">
-      </ul>
-      <ul id="see-trips-by-budget">
-      </ul>
-      <section id="trips">
-        <ul class="row small-up-2 medium-up-4 large-up-6" data-equalize>
-        </ul>
-      </section>
-      <!-- / -->
+      <section id="reservations"></section>
+      <section id="trip-show"></section>
+      <section id="trips-by-continent"></section>
+      <section id="trips-by-budget"></section>
+      <section id="trips"><h2> Available Trips </h2></section>
     </main>
     <footer>
     </footer>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js">
+
+
+    <!-- TEMPLATES  -->
+
+    <script id="trips-by-continent-template" type="text/template">
+      <ul id="trips-by-continent">
+        <% for (var i = 0; i < data.continents.length; i++) { %>
+           <li>
+             <a class="success button" href=<%-data.continents[i].replace(/\s+/g, '%20') %>>
+             <%-data.continents[i] %>
+           </a>
+         </li>
+        <% } %>
     </script>
 
+    <script id="trips-by-budget-template" type="text/template">
+      </ul>
+      <ul id="trips-by-budget">
+        <% for (var i = 500; i < data.maxBudget; i+=500) { %>
+           <li>
+             <a class="success button" href=<%- i %>><%- i %></a>
+         </li>
+        <% } %>
+      </ul>
+    </script>
+
+
+    <script id="trips-template" type="text/template">
+      <ul class="row small-up-2 medium-up-4 large-up-6" data-equalize>
+        <% for (var i = 0; i < trips.length; i++) { %>
+          <li data-equalizer-watch class='column see-trip'>
+            <div>
+              <h3>
+                <a href=<%- trips[i].id %>> <%- trips[i].name  %> </a>
+              </h3>
+            </div>
+          </li>
+        <% } %>
+      </ul>
+    </script>
+
+
+    <script id="trip-show-template" type="text/template">
+      <article>
+        <h5><a id="close-trip"> Hide Trip </a></h5>
+
+        <h3><%- data.name %></h3>
+
+        <ul>
+          <li><h4>Cost: <%- data.cost %></h4></li>
+          <li><h4>Weeks: <%- data.weeks %></h4></li>
+          <li><p>Continent: <%- data.continent %></p></li>
+          <li><p>Category: <%- data.category %></p></li>
+          <li><p>Spots Available: <%- data.continent %></p></li>
+        </ul>
+        <p><%- data.about %></p>
+
+        <button class="success button"> Reserve a spot! </button>
+      </article>
+    </script>
+
+    <script id="reservations-template" type="text/template">
+      <h4> Your Reservations </h4>
+      <ul>
+      <% for (var i = 0; i < reservations.length; i++) { %>
+        <li>
+          <a href=<%- reservations[i].id %>>
+            <%- reservations[i].name
+          </a>
+        </li>
+      <% } %>
+      </ul>
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
   </body>
 </html>
