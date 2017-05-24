@@ -21,7 +21,7 @@
       <section id="trip-show"></section>
       <section id="trips-by-continent"></section>
       <section id="trips-by-budget"></section>
-      <section id="trips"></section>
+      <section id="trips"><h2> Available Trips </h2></section>
     </main>
     <footer>
     </footer>
@@ -53,7 +53,6 @@
 
 
     <script id="trips-template" type="text/template">
-      <h2> Available Trips </h2>
       <ul class="row small-up-2 medium-up-4 large-up-6" data-equalize>
         <% for (var i = 0; i < trips.length; i++) { %>
           <li data-equalizer-watch class='column see-trip'>

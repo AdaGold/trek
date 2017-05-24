@@ -7,12 +7,7 @@ $(document).ready(function(){
   var url = 'https://trektravel.herokuapp.com/trips';
 
   var maxBudget = tripsByBudgetTemplate({ data: { maxBudget: 4000 }});
-  var continents = tripsByContinentTemplate({
-    data: {
-      continents: ['Asia', 'Africa', 'Europe', 'South America', 'North America', 'Antartica', 'Australasia']
-    }
-  });
-
+  var continents = tripsByContinentTemplate({ data: { continents: ['Asia', 'Africa', 'Europe', 'South America', 'North America', 'Antartica', 'Australasia']}});
   $('#trips-by-continent').append($(continents));
   $('#trips-by-budget').append($(maxBudget));
 
@@ -32,6 +27,9 @@ $(document).ready(function(){
 
 
   var tripShow = function(response) {
+    $('#trip-show').empty();
+    $('#trip-show').show();
+
     var tripData = tripShowTemplate({
       data: {
         name: response.name,
@@ -42,8 +40,9 @@ $(document).ready(function(){
         about: response.about
       }
     });
+
     $('#trip-show').append($(tripData));
-  }; //tripShow()
+  }; //tripShow
 
 
 
@@ -65,7 +64,6 @@ $(document).ready(function(){
   });
 
 
-
   $('#reserve-form').submit(function(event) {
     event.preventDefault();
     var formData = $(this).serialize();
@@ -76,7 +74,6 @@ $(document).ready(function(){
       $('#reserve-form').hide();
     });
   });
-
 
 
   $('#trip-show').on('click', 'a', function(e){
@@ -116,7 +113,7 @@ $(document).ready(function(){
 
 
 
-  $('#trips ul').on('click', 'a', function(e) {
+  $('#trips').on('click', 'a', function(e) {
     e.preventDefault();
     $('#trip').show();
     var tripId = $(this).attr('href');
