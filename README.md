@@ -19,4 +19,4 @@ Look at the different web pages that the user sees when they navigate around the
 Next, examine the actions that the user can do on the website. What things can the user do? Are these actions related to a specific piece of data or a collection of data?
 
 ### Step Four: Putting it all together
-Now based off of each of the previous steps, see if you can start to visualize how you might adjust the structure of the existing code to follow the components and pieces you've defined in the previous steps.
+Now based off of each of the previous steps, take the printed out code and organize it according to the components you've identified. Which _actions_ belong with which _data_? Which _HTML Template_ might be rendered by a particular _action_?
