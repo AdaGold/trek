@@ -127,9 +127,6 @@ $(document).ready(function(){
     });
   });
 
-
-
-
   $('#trips').on('click', 'a', function(e) {
     e.preventDefault();
     $('#trip').show();
@@ -137,8 +134,8 @@ $(document).ready(function(){
     var tripUrl = url + '/' + tripId;
     var trip = $.get(tripUrl, tripShow).fail(function() {
       alert("Trip Not Found");
-    });//get tripURL .fail
-  }); // see-trips.click
+    });
+  });
 
 
   var matchHeight = function(){
