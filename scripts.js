@@ -86,13 +86,13 @@ $(document).ready(function(){
   $('#trip-show').on('submit', 'form', function(e) {
     e.preventDefault();
     var formData = $(this).serialize();
-    var reserveUrl = url + $(this).attr('action') + "/reserve";
+    var reserveUrl = url + '/' + $(this).attr('action') + "/reserve";
     console.log(reserveUrl);
     $.post(reserveUrl, formData, function(response){
-      $('#messages').append("<h3>Reservation Made!</h3");
+      $('#messages').append("<h3> Reservation Made! </h3>");
       $('#reserve-trip').hide();
     }).fail(function(){
-      $('#messages').append("<h3> Reservation Failed. </h3");
+      $('#messages').append("<h3> Reservation Failed. </h3>");
     });
   });
 
