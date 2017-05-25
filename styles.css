@@ -1,6 +1,6 @@
 li{ list-style-type: none; }
 
-#trip, #see-reservations-by-email, #reservations, #trip-show { display: none; }
+#trip, #see-reservations-by-email, #reservations { display: none; }
 
 #trips li div {
   margin: 2%;
@@ -13,12 +13,3 @@ li{ list-style-type: none; }
 #trips-by-continent li, #trips-by-budget li{
   display: inline-block;
 }
-
-/*#trip-show {
-  z-index: 10;
-  width: 50%;
-  padding: 3%;
-  background-color: red;
-  top: 500px;
-  margin: 0 auto;
-}*/
