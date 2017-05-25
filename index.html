@@ -48,6 +48,8 @@
         <% } %>
     </script>
 
+
+
     <script id="trips-by-budget-template" type="text/template">
       </ul>
       <ul id="trips-by-budget">
@@ -74,6 +76,18 @@
       </ul>
     </script>
 
+    <script id="reservations-template" type="text/template">
+       <h4> Your Reservations </h4>
+        <ul>
+        <% for (var i = 0; i < reservations.length; i++) { %>
+          <li>
+            <a href=<%- reservations[i].id %>>
+              <%- reservations[i].name %>
+            </a>
+          </li>
+        <% } %>
+        </ul>
+    </script>
 
     <script id="trip-show-template" type="text/template">
       <article>
@@ -90,22 +104,32 @@
         </ul>
         <p><%- data.about %></p>
 
-        <button class="success button"> Reserve a spot! </button>
+        <button class="success button" id="see-reservation-form-button" data-trip-id=<%-data.id%>> Reserve a spot! </button>
       </article>
     </script>
 
-    <script id="reservations-template" type="text/template">
-      <h4> Your Reservations </h4>
-      <ul>
-      <% for (var i = 0; i < reservations.length; i++) { %>
-        <li>
-          <a href=<%- reservations[i].id %>>
-            <%- reservations[i].name
-          </a>
-        </li>
-      <% } %>
-      </ul>
+    <script id="reserve-trip-template" type="text/template">
+      <section id="messages"></section>
+      <form id="reserve-trip" action=<%-tripId%> method="post">
+        <section>
+          <label for="name"> Name: </label>
+          <input type="text" name="name">
+        </section>
+        <section>
+          <label for="age"> Age: </label>
+          <input type="text" name="age">
+        </section>
+        <section>
+          <label for="email"> Email: </label>
+          <input type="text" name="email">
+        </section>
+
+        <section>
+          <button type="submit" class="success button"> Reserve! </button>
+        </section>
+      </form>
     </script>
+
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
