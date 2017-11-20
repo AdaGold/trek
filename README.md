@@ -1,6 +1,6 @@
 # TREK
 
-TREK is a web application that displays deals on travel packages.
+TREK is an application that displays information on travel packages and allows users to reserve spots on a specific trip.
 
 This is a [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md) individual project.
 
@@ -21,14 +21,14 @@ All of this should be done without ever having to reload the page. In other word
 View the [Travel API's documentation](https://github.com/AdaGold/trip_api).
 
 ## Requirements
-- **Wave 1** Click button or link to show all trips
-- **Wave 2** Can click on a trip, from the list of trips, to see more information about that trip
+- **Wave 1:** Click button or link to show all trips
+- **Wave 2:** Can click on a trip, from the list of trips, to see more information about that trip
   - Should be able to see id, name, destination, continent, about, category, weeks and cost
-- **Wave 3** While viewing a single trip, you can reserve a spot
-  - Use a form to submit your name to reserve a spot on the trip you are viewing
+- **Wave 3:** While viewing a single trip, you can reserve a spot
+  - Use a form to submit your name to reserve a spot on the trip you are viewing.
 - **For All Waves**
-  - Any errors encountered while interacting with the API shall be politely reported to the user
-  - You shall use HTML best-practices. You should organize your HTML by grouping content using semantic HTML tags.
+  - Any errors encountered while interacting with the API shall be politely reported to the user.
+  - You shall use HTML best-practices. Use semantic HTML tags to group and organize your HTML appropriately.
   - Site should be attractively styled, using Foundation for a responsive grid layout
 
 
