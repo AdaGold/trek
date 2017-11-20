@@ -16,5 +16,4 @@
 | Trip data is retrieved using jQuery AJAX |  |
 | JavaScript is well-organized and easy to read |  |
 | HTML is semantic |  |
-| All dynamic content is rendered using Underscore templates |  |
 | **Overall** |  |

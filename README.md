@@ -9,7 +9,6 @@ This is a [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/mast
 - Reading data from an API using AJAX
 - Posting data to an API using AJAX
 - Building dynamic elements on a page with jQuery
-- Using Underscore templates to simplify rendering HTML from JavaScript
 
 ## Description
 
@@ -28,7 +27,6 @@ View the [Travel API's documentation](https://github.com/AdaGold/trip_api).
 - **Wave 3** While viewing a single trip, you can reserve a spot
   - Use a form to submit your name to reserve a spot on the trip you are viewing
 - **For All Waves**
-  - Any dynamic elements on the page shall be rendered using Underscore templates
   - Any errors encountered while interacting with the API shall be politely reported to the user
   - You shall use HTML best-practices. You should organize your HTML by grouping content using semantic HTML tags.
   - Site should be attractively styled, using Foundation for a responsive grid layout
