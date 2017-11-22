@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Karla|Lustria|Fauna+One");
+
+p {
+  font-family: "Karla", sans-serif;
+}
+
+h1 {
+  font-family: "Lustria", serif;
+}
+li {
+  font-family: "Karla", sans-serif;
+}
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Fauna One", serif;
+}
+.top-bar ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+}
+.top-bar {
+  background-color: #966998;
+}
+
+.list-trips {
+  background-color: #ebe3ae;
+}
+
+.individual-trip {
+  background-color: #fefefe;
+}
+
+footer {
+  background-color: #800000;
+}
+.trip {
+  padding: 20px;
+}
+.top-bar,
+footer {
+  width: 100%;
+  height: 50px;
+}

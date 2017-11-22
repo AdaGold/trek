@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css" >
       <link href="styles.css" rel="stylesheet">
     <meta charset="utf-8">
     <title>Trek Tranporter</title>
@@ -10,25 +11,35 @@
 
 
     <h1>Trek Transporter</h1>
+    <nav class = 'top-bar'>
+
+
     <ul>
 
 
-    <li> <button id="travel-list">List Trips</button></li>
-    <li><button id="travel-continent">by Continent</button></li></li>
-    <li><button id="travel-price">by Price</button></li></li>
-    <li><button id="travel-time">by Time</button></li></li>
+    <li> <button class = 'button' id="travel-list">List Trips</button></li>
+    <li><button  class = 'button' id="travel-continent">by Continent</button></li></li>
+    <li><button  class = 'button' id="travel-price">by Price</button></li></li>
+    <li><button  class = 'button' id="travel-time">by Time</button></li></li>
 
         </ul>
+          </nav>
       </header>
+      <div id="ajax-results">
 
+      </div>
     <div class="individual-trip">
+
+    </div>
+    <div class="reserve-trip">
 
     </div>
 
     <div class="list-trips">
 
     </div>
-
+    <footer>
+    </footer>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
   </body>
