@@ -2,14 +2,20 @@ $(document).ready(() => {
   const baseUrl = "https://trektravel.herokuapp.com";
 
   const travelList = function travelList() {
-    let travelInfo = [];
-
     const listPartial = "/trips";
+    if (".individual-trip-section") {
+      $(".individual-trip-section").remove();
+    }
+    if ("#ajax-results p") {
+      $("#ajax-results p").remove();
+    }
     $.get(baseUrl + listPartial, response => {
       for (let trip of response) {
         // let wonderAddress = response.results[0].formatted_address;
         $(".list-trips").append(
-          `<h3 class="trip" id ="${trip["id"]}"> ${trip["name"]}</h3>`
+          `<h3 class="trip column column-block" id ="${trip["id"]}"> ${
+            trip["name"]
+          }</h3>`
         );
       }
     })
@@ -29,9 +35,9 @@ $(document).ready(() => {
       // let wonderAddress = response.results[0].formatted_address;
       console.log(response);
       $(".individual-trip").html(
-        `<h2>${
+        `<section class = "individual-trip-section row small-up-1 medium-up-1 large-up-2"><div class = "column column-block"> <h2>${
           response["name"]
-        }</h2> <button class = 'button' id="reserve">Reserve Trip</button> <h4>Trip Details</h4> <ul><li class = 'trip-id' id='${
+        }</h2> <button class = 'hollow button' id="reserve">Reserve Trip <i class="fa fa-plane"></i></button> <h4>Trip Details</h4> <ul><li class = 'trip-id' id='${
           response["id"]
         }'>Id: ${response["id"]} </li> <li>Category: ${
           response["category"]
@@ -41,9 +47,9 @@ $(document).ready(() => {
           response["weeks"]
         }</li> <li>Price(USD): $${parseFloat(response["cost"]).toFixed(
           2
-        )}</li> </ul> <form id="add-reservation-form" action="index.html" method="post"></form><h4>Description<h4><p> ${
+        )}</li> </ul></div> <form class = "column column-block" id="add-reservation-form" action="index.html" method="post"></form><div class = "description"> <h4>Description</h4> <p> ${
           response["about"]
-        }</p>`
+        }</p></div></section>`
       );
       console.log(response);
     })
@@ -64,12 +70,7 @@ $(document).ready(() => {
   $(".individual-trip").on("submit", function(event) {
     // don't refresh the page(default behavior)
     event.preventDefault();
-    // it's possible to do something like this
-    // let nameInput =$('#add-pet-form' input[name='name']).val();
 
-    // but instead we do some jQuery magic
-    // .serialize takes form and turns into query params, which is called form encoding or 'serializing'
-    console.log("something happening");
     let formData = $("#add-reservation-form").serialize();
     console.log(formData);
 
@@ -92,13 +93,14 @@ $(document).ready(() => {
   });
 
   $(".individual-trip").on("click", "#reserve", function() {
+    $("#reserve").remove();
     $("#add-reservation-form").html(`  <label for 'name'>Name:</label>
     <input type='text' name= 'name'></input>
   <label for ='age'>Age:</label>
     <input type='text' name= 'age'></input>
     <label for ='email'>Email:</label>
       <input type='text' name= 'email'></input>
-    <input type='submit' name="submit" value="Reserve Now" class="button">`);
+    <input type='submit' name="submit" value="Reserve Now" class="hollow button">`);
     let tripId = $(this).attr("id");
     console.log(tripId);
   });
