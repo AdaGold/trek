@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css?family=Karla|Lustria|Fauna+One");
+
+/*#a1e1b2	(161,225,178)light green
+#ffeafb	(255,234,251)pink
+#5b927a	(91,146,122)dark green
+#9683ae	(150,131,174) purple
+#c7ffd0	(199,255,208) light green*/
+p {
+  font-family: "Karla", sans-serif;
+  padding: 30px;
+}
+.column button {
+  margin: 50px;
+}
+.column ul,
+.column form,
+.column h2,
+.column h4,
+.individual-trip-section form,
+.description {
+  padding: 10px 50px;
+}
+.main {
+  background-color: #fefefe;
+  padding: 80px 0px;
+  height: 600px;
+}
+h1 {
+  font-family: "Lustria", serif;
+  color: #9683ae;
+}
+li {
+  font-family: "Karla", sans-serif;
+}
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Fauna One", serif;
+  color: #5b927a;
+}
+
+.list-trips h3 {
+  font-size: 24px;
+}
+.top-bar ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+}
+.top-bar ul li .button {
+  color: #9683ae;
+}
+
+.top-bar .button.hollow {
+  border: 1px solid #9683ae;
+}
+.top-bar,
+.top-bar ul {
+  background-color: #c7ffd0;
+  padding: 0px;
+  margin: 0px;
+}
+
+.list-trips {
+  background-color: #a1e1b2;
+}
+
+.individual-trip {
+  background-color: #ffeafb;
+  margin: 50px;
+}
+
+/*.footer {
+  color: #ffeafb;
+  margin: 0px;
+  width: 100%;
+}*/
+.trip {
+  padding: 20px;
+  margin: 0px;
+  width: 70%;
+  height: auto;
+}
+.top-bar,
+footer {
+  width: 100%;
+  height: 75px;
+}
+ul {
+  padding: 30px;
+}
+.main {
+  background-image: url("images/country-2595903_1920.jpg");
+}
+.container {
+  position: relative;
+  width: 50%;
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  /*background-color: #9683ae;*/
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: 0.5s ease;
+}
+.container:hover .overlay {
+  width: 100%;
+  cursor: pointer;
+}
+
+.text {
+  white-space: nowrap;
+  color: #ffeafb;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: right;
+  bottom: 0;
+  right: 0;
+  vertical-align: bottom;
+}
+
+footer {
+  clear: both;
+  margin-bottom: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: #5b927a;
+  padding: 20px;
+}

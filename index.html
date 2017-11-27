@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css" >
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="styles.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Trek Tranporter</title>
+</head>
+<body>
+  <header>
+
+
+    <h1>Trek Transporter</h1>
+    <nav class = 'top-bar'>
+
+      <ul >
+        <li> <button class = 'hollow button' id="travel-list">List Trips</button></li>
+        <li><button  class = 'hollow button has-dropdown' id="travel-continent">by Continent <i class="fa fa-search"></i></button></li>
+        <li><button  class = 'hollow button' id="travel-price">by Price <i class="fa fa-search"></i></button></li>
+        <li><button  class = 'hollow button' id="travel-time">by Time <i class="fa fa-search"></i> </button></li>
+        <li><button  class = 'hollow button' id="add-trip">Add Trip <i class="fa fa-plus-square-o"></i> </button></li>
+
+      </ul>
+    </nav>
+  </header>
+  <section class = "main">
+
+
+    <div id="ajax-results">
+
+    </div>
+    <div class="individual-trip row small-up-1 medium-up-1 large-up-2">
+
+    </div>
+    <div class="reserve-trip">
+
+    </div>
+
+    <div class="list-trips">
+
+    </div>
+  </section>
+  </body>
+  <footer>
+    <div class="footer row small-up-2">
+      <div class="column column-block">
+        &copy; 2017
+      </div>
+      <div class="column column-block">
+        brought to you by Ada Developers Academy <em>Travel API</em>
+      </div>
+
+    </div>
+  </footer>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+
+</html>
