@@ -10,12 +10,16 @@ $(document).ready(() => {
       $("#ajax-results p").remove();
     }
     $.get(baseUrl + listPartial, response => {
+      $(".list-trips").html(
+        `<div class = "removable-trip-list  row small-up-2 medium-up-2 large-up-3 "></div>`
+      );
       for (let trip of response) {
-        // let wonderAddress = response.results[0].formatted_address;
-        $(".list-trips").append(
-          `<h3 class="trip column column-block" id ="${trip["id"]}"> ${
+        $(".removable-trip-list").append(
+          `<div class = "container column column-block "><h3 class="trip" > ${
             trip["name"]
-          }</h3>`
+          }</h3> <div class="overlay"  id ="${trip["id"]}">
+    <div class="text">Learn More</div>
+  </div><div>`
         );
       }
     })
@@ -30,7 +34,9 @@ $(document).ready(() => {
 
   const singleTrip = function singleTrip(number) {
     const singleTripUrlPartial = "/trips/";
-
+    if (".removable-trip-list") {
+      $(".removable-trip-list").remove();
+    }
     $.get(baseUrl + singleTripUrlPartial + number, response => {
       // let wonderAddress = response.results[0].formatted_address;
       console.log(response);
@@ -52,13 +58,9 @@ $(document).ready(() => {
         }</p></div></section>`
       );
       console.log(response);
-    })
-      .fail(function(response) {
-        $("#fail").html("<p>Request was unsuccessful</p>");
-      })
-      .always(function() {
-        console.log("always even if we have success or failure");
-      });
+    }).fail(function(response) {
+      $("#fail").html("<p>Request was unsuccessful</p>");
+    });
   };
   const callback = function response() {
     console.log("successful");
@@ -86,8 +88,15 @@ $(document).ready(() => {
       console.log("fail case");
     });
   });
+  //
+  //   Retrieve list of all trips by continent: https://trektravel.herokuapp.com/trips/continent?query=Asia
+  //
+  // Retrieve list of all trips by max amount of weeks: https://trektravel.herokuapp.com/trips/weeks?query=3
+  //
+  // Retrieve list of all trips by max budget: https://trektravel.herokuapp.com/trips/budget?query=5000
+
   // EVENTS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  $(".list-trips").on("click", "h3", function() {
+  $(".list-trips").on("click", ".overlay", function() {
     let tripId = $(this).attr("id");
     singleTrip(tripId);
   });
