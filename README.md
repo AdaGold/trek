@@ -23,7 +23,7 @@ View the [Travel API's documentation](https://github.com/AdaGold/trip_api).
 ## Requirements
 - **Wave 1:** Click button or link to show all trips
 - **Wave 2:** Can click on a trip, from the list of trips, to see more information about that trip
-  - Should be able to see id, name, destination, continent, about, category, weeks and cost
+  - Should be able to see id, name, continent, about, category, weeks and cost
 - **Wave 3:** While viewing a single trip, you can reserve a spot
   - Use a form to submit your name to reserve a spot on the trip you are viewing.
 - **For All Waves**
@@ -31,6 +31,20 @@ View the [Travel API's documentation](https://github.com/AdaGold/trip_api).
   - You shall use HTML best-practices. Use semantic HTML tags to group and organize your HTML appropriately.
   - Site should be attractively styled, using Foundation for a responsive grid layout
 
+## Optional Wireframes
+You have creative control over the design and layout of this project. Below are optional wireframes you may use. It is not a requirement that you do.
+
+**Base Page**
+![base page](wireframes/base-page.png)
+
+**See All Trips**
+![see all trips](wireframes/see-all-trips.png)
+
+**Click a Trip**
+![click a trip](wireframes/click-a-trip.png)
+
+
+<!-- https://www.draw.io/#G1n5hDq4YfmeGtHQ9U0Cx0aZWyeUqNxq9B -->
 
 ## Optional Enhancements
 
