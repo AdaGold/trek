@@ -60,3 +60,6 @@ Given I found a specific trip to look at, when I click on a specific trip, then 
 - **For more practice working with data**, filter trips by search queries (like by continent, budget, etc.). You'll need to explore the API to see what functionality exists.
 - **To practice a more advanced POST**, allow the user to create a new trip.
 - **For more jQuery practice**, use jQuery to sort list of trips by specific attributes, like budget or time remaining.
+
+## What We're Looking For
+You can see [here](./feedback.md) for what your instructors will look for in your submission. 
