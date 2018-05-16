@@ -6,13 +6,13 @@ This is a [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/mast
 
 ## Learning Goals
 
-- Reading data from an API using AJAX
-- Posting data to an API using AJAX
+- Reading data from an API using Axios
+- Posting data to an API using Axios
 - Building dynamic elements on a page with jQuery
 
 ## Description
 
-You will build a web app that will query data from an api, using AJAX, to display a list of trips and view more information on a specific trip. While viewing a specific trip, you can claim your spot by sending data back to the API.
+You will build a web app that will query data from an api, using Axios, to display a list of trips and view more information on a specific trip. While viewing a specific trip, you can claim your spot by sending data back to the API.
 
 All of this should be done without ever having to reload the page. In other words, TREK will be a single page application and will only need one html page (index.html).
 
@@ -62,4 +62,4 @@ Given I found a specific trip to look at, when I click on a specific trip, then 
 - **For more jQuery practice**, use jQuery to sort list of trips by specific attributes, like budget or time remaining.
 
 ## What We're Looking For
-You can see [here](./feedback.md) for what your instructors will look for in your submission. 
+You can see [here](./feedback.md) for what your instructors will look for in your submission.
