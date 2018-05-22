@@ -29,7 +29,7 @@ View the [Travel API's documentation](https://github.com/AdaGold/trip_api).
 - **For All Waves**
   - Any errors encountered while interacting with the API shall be politely reported to the user.
   - You shall use HTML best-practices. Use semantic HTML tags to group and organize your HTML appropriately.
-  - Site should be attractively styled, using Foundation for a responsive grid layout
+  - Site should be attractively styled, using CSS Grid or Flexbox for a responsive grid layout
 
 ## Optional Wireframes
 You have creative control over the design and layout of this project. Below are optional wireframes you may use. It is not a requirement that you do.
