@@ -1,8 +1,11 @@
 # TREK
 
-TREK is an application that displays information on travel packages and allows users to reserve spots on a specific trip.
+## At a Glance
 
-This is a [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md) individual project.
+- Individual, [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md) project
+- Due before class, DATE HERE
+
+TREK is an application that displays information on travel packages and allows users to reserve spots on a specific trip.
 
 ## Learning Goals
 
@@ -10,45 +13,67 @@ This is a [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/mast
 - Posting data to an API using axios
 - Building dynamic elements on a page with jQuery
 
-## Description
+## Objective
 
 You will build a web app that will query data from an api, using axios, to display a list of trips and view more information on a specific trip. While viewing a specific trip, you can claim your spot by sending data back to the API.
 
-All of this should be done without ever having to reload the page. In other words, TREK will be a single page application and will only need one html page (index.html).
+All of this should be done without ever having to reload the page. In other words, TREK will be a single page application and will only need one html page, `index.html`.
 
 ## The API
 
-View the [Travel API's documentation](https://github.com/AdaGold/trip_api).
+This project will use Ada's Travel API. Read about its usage on the [Travel API's documentation](https://github.com/AdaGold/trip_api).
 
-## Requirements
-- **Wave 1:** Click button or link to show all trips
-- **Wave 2:** Can click on a trip, from the list of trips, to see more information about that trip
-  - Should be able to see id, name, continent, about, category, weeks and cost
-- **Wave 3:** While viewing a single trip, you can reserve a spot
-  - Use a form to submit your name to reserve a spot on the trip you are viewing.
-- **For All Waves**
-  - Any errors encountered while interacting with the API shall be politely reported to the user.
-  - You shall use HTML best-practices. Use semantic HTML tags to group and organize your HTML appropriately.
-  - Site should be attractively styled, using CSS Grid or Flexbox for a responsive grid layout
+## Non-Functional Requirements
+
+- Any errors encountered while interacting with the API must be politely reported to the user
+- Use HTML best-practices. Use semantic HTML tags to group and organize your HTML appropriately
+- The site should be attractively styled, using CSS Grid, flexbox, and/or Bootstrap
+
+## Functional Requirements
+
+### Wave 1
+
+- As a user on the home page with no trips listed, I want to click a button or link, so that I see a list of all trips.
+
+### Wave 2
+
+- As a user on the home page with trips listed, I want to click on a specific trip, so that I see a new section appear with details of that trip.
+- As a user on the home page, after I've selected a specific trip, I want to see the following fields listed in the new section of the page, so that I know the details of that trip:
+  - Trip ID
+  - Trip name
+  - Continent
+  - Details about the trip
+  - Category of the trip
+  - Number of weeks duration of the trip
+  - Cost of the trip
+
+### Wave 3
+
+- As a user on the home page, after I've selected a specific trip, I want to see a form I can use to fill out details, so that I can submit a reservation to this trip
+- As a user on the home page, after I've selected a specific trip, I want to use the form to fill out the following details, so that I can submit my information with this reservation:
+  - name
+  - email
 
 ## Optional Wireframes
 You have creative control over the design and layout of this project. Below are optional wireframes you may use. It is not a requirement that you do.
 
 **Base Page**
 
-Given I want to look up trips, when I go to the home page, then I see the following page:
+As a user, I want to arrive to a site with no trips listed, so that I can admire the beautiful, negative space:
 
 ![base page](wireframes/base-page.png)
 
 **See All Trips**
 
-Given I want to see all trips, when I click "See all trips", then I see the trips column on the left shown.
+As a user on the home page with no trips listed, I want to click a button or link, so that I see a list of all trips:
 
 ![see all trips](wireframes/see-all-trips.png)
 
 **Click a Trip**
 
-Given I found a specific trip to look at, when I click on a specific trip, then on the right I see the trip details and the form to reserve the trip.
+As a user on the home page with trips listed, I want to click on a specific trip, so that I see a new section appear with details of that trip.
+
+As a user on the home page, after I've selected a specific trip, I want to see a form I can use to fill out details, so that I can submit a reservation to this trip
 
 ![click a trip](wireframes/click-a-trip.png)
 
@@ -61,5 +86,5 @@ Given I found a specific trip to look at, when I click on a specific trip, then 
 - **To practice a more advanced POST**, allow the user to create a new trip.
 - **For more jQuery practice**, use jQuery to sort list of trips by specific attributes, like budget or time remaining.
 
-## What We're Looking For
-You can see [here](./feedback.md) for what your instructors will look for in your submission.
+## What Instructors Are Looking For
+Check out the [feedback template](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
