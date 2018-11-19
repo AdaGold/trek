@@ -4,8 +4,7 @@ Congratulations! You're submitting your assignment!
 ## Comprehension Questions
 Question | Answer
 :------------- | :-------------
-What does it mean for code to be asynchronous? | 
-Describe a piece of your code that executes asynchronously. How did this affect the way you structured it? | 
-What kind of errors might the API give you? How did you choose to handle them? | 
-Do you have any recommendations on how we could improve this project for the next cohort? | 
+What does it mean for code to be asynchronous? |
+Describe a piece of your code that executes asynchronously. How did this affect the way you structured it? |
+What kind of errors might the API give you? How did you choose to handle them? |
 Suppose you needed to routinely find a specific `Trip` in the list by it's ID field.  Would it be advantageous to keep the list in order by the id field?  Explain why or why not. |
