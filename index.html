@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Trek</title>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <section id="status-message"></section>
+
+  <main>
+    <section class="current-trip">
+      <h1>Trek</h1>
+      <button id="load">See All Trips</button>
+      <ul id="trip-list"></ul>
+    </section>
+    <section>
+      <p id="trip-detail"></p>
+
+
+    <section class="new-trip">
+      <h1>Add a Reservation</h1>
+      <form id="trip-form">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="name" />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="text" name="email" />
+        </div>
+
+        <input type="submit" name="add-reservation" value="Add Reservation" />
+      </form>
+    </section>
+  </main>
+</body>
+</html>
