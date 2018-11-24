@@ -26,7 +26,6 @@ const loadTripDetails = (id) => {
   axios.get(URL + "/" + id)
   .then((response) => {
     reportStatus(response);
-    console.log(response);
     tripDetail.append(`<p>
       Name: ${response.data.name}</p>
       <p>Continent: ${response.data.continent}</p>
@@ -34,28 +33,49 @@ const loadTripDetails = (id) => {
       <p>Category: ${response.data.category}</p>
       <p>Weeks: ${response.data.weeks}</p>
       <p>Trip Details: ${response.data.about}
-      </p>`);
+      </p>
+
+      <section class="new-trip">
+      <h1>Add a Reservation</h1>
+      <form id="trip-form" onSubmit="createReservation(${id})">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="name" />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="text" name="email" />
+        </div>
+
+      <input type="submit" value="Add Reservation" />
+          </form>
+      </section>`);
 
   })
 
 };
 
+
+
 const createReservation = (id) => {
+
+  const postURL = `${URL}/${id}/reservations`
+  console.log("this is the post url", postURL);
+
   reportStatus("loading trip details...");
 
-  console.log("you're in create trip!");
-  reportStatus('Sending pet data...');
-
-  // const tripReservation = $('.new-trip');
-  // tripReservation.empty();
+  console.log("you're in create reservation!");
+  reportStatus('Sending trip data...');
 
   const data = {
     name: $('input[name="name"]').val(),
     email: $('input[name="email"]').val(),
   };
 
-  axios.post(URL, data)
+  axios.post(postURL, data)
   .then((response) => {
+    console.log(response);
     reportStatus(`Successfully added a reservation ${response.data.id} for ${response.data.name}, email ${response.data.email}`);
   })
   .catch((error) => {
@@ -80,9 +100,7 @@ const loadTrips = () => {
   axios.get(URL)
   .then((response) => {
     reportStatus(`Successfully loaded ${response.data.length} trips`);
-
     // sort
-
     response.data.forEach((trip) => {
       tripList.append(`<li><a href='#' class="trip_id" id=${trip.id}>${trip.name}</li>`);
 
@@ -91,15 +109,13 @@ const loadTrips = () => {
   .catch((error) => {
     reportStatus(error);
     console.log(error);
-  });
+    });
 };
 
 $(document).ready(() => {
   $('#load').click(loadTrips);
+
   $('body').on('click', '.trip_id', function(event){
     loadTripDetails(event.target.id);
-    // tripReservation(event.target.id);
-    console.log(event);
   });
-  // $('#trip-form').submit(createTrip);
 });
