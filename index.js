@@ -37,43 +37,40 @@ const loadTripDetails = (id) => {
 
       <section class="new-trip">
       <h1>Add a Reservation</h1>
-      <form id="trip-form" onSubmit="createReservation(${id})">
-        <div>
-          <label for="name">Name</label>
+      <form  action="" id="trip-form">
+          <label for="name">Your name</label>
           <input type="text" name="name" />
-        </div>
-
-        <div>
           <label for="email">Email</label>
-          <input type="text" name="email" />
-        </div>
-
-      <input type="submit" value="Add Reservation" />
-          </form>
+          <input type="text" name="email"/>
+          <input type="submit" value="Add Reservation" />
+      </form>
       </section>`);
 
+      $('#trip-form').submit((event) => {
+        event.preventDefault();
+        createReservation(id);
+      })
   })
-
 };
-
-
 
 const createReservation = (id) => {
 
   const postURL = `${URL}/${id}/reservations`
-  console.log("this is the post url", postURL);
+  console.log("this is the post url:", postURL);
 
   reportStatus("loading trip details...");
 
   console.log("you're in create reservation!");
   reportStatus('Sending trip data...');
 
-  const data = {
+  const payload = {
     name: $('input[name="name"]').val(),
     email: $('input[name="email"]').val(),
   };
 
-  axios.post(postURL, data)
+   console.log(payload);
+
+  axios.post(postURL, payload)
   .then((response) => {
     console.log(response);
     reportStatus(`Successfully added a reservation ${response.data.id} for ${response.data.name}, email ${response.data.email}`);
@@ -88,7 +85,6 @@ const createReservation = (id) => {
       reportStatus(`Encountered an error: ${error.message}`);
     }
   });
-
 };
 
 const loadTrips = () => {
