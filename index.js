@@ -56,11 +56,8 @@ const loadTripDetails = (id) => {
 const createReservation = (id) => {
 
   const postURL = `${URL}/${id}/reservations`
-  console.log("this is the post url:", postURL);
 
   reportStatus("loading trip details...");
-
-  console.log("you're in create reservation!");
   reportStatus('Sending trip data...');
 
   const payload = {
@@ -68,11 +65,8 @@ const createReservation = (id) => {
     email: $('input[name="email"]').val(),
   };
 
-   console.log(payload);
-
   axios.post(postURL, payload)
   .then((response) => {
-    console.log(response);
     reportStatus(`Successfully added a reservation ${response.data.id} for ${response.data.name}, email ${response.data.email}`);
   })
   .catch((error) => {
@@ -104,7 +98,6 @@ const loadTrips = () => {
   })
   .catch((error) => {
     reportStatus(error);
-    console.log(error);
     });
 };
 
