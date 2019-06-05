@@ -11,7 +11,8 @@ Click a button to load and view a list of trips |
 Clicking the "load" button twice does not cause each trip to display twice | 
 Click a trip to load and view trip details | 
 Clicking a different trip loads different details | 
-Fill out a form to reserve a spot | 
+Open network tab, then fill out a form to reserve a spot | 
+Submitting the form only sends one POST request | 
 Errors are reported to the user | 
 Site is clearly laid out and easy to navigate | 
 **Under the Hood** |
